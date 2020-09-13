@@ -47,7 +47,7 @@ def get_pred(image_path):
   # load the image
   img = load_image(image_path)
   # load model
-  model = load_model('200_model.h5')
+  model = load_model('../../models/30epochs_model.h5')
   # predict the class
   result = model.predict(img)
   print(result[0])
