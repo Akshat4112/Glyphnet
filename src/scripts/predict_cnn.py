@@ -13,8 +13,8 @@ from keras.preprocessing.image import img_to_array
 from keras.models import load_model
 import tensorflow.keras
 
-model = load_model('../../models/30epochs_model.h5')
-print("model Loaded")
+#model = load_model('../../models/30epochs_model.h5')
+#print("model Loaded")
 font = 'ARIAL.TTF'
 
 # # BASE_DIR = ''
@@ -47,7 +47,7 @@ def get_pred(image_path):
   # load the image
   img = load_image(image_path)
   # load model
-  model = load_model('../../models/30epochs_model.h5')
+  model = load_model('../../models/model_v1.h5')
   # predict the class
   result = model.predict(img)
   print(result[0])

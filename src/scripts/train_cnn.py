@@ -24,7 +24,7 @@ model.add(layers.Dense(1, activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy',
               optimizer=optimizers.RMSprop(lr=1e-4),
-              metrics=['acc', tf.keras.metrics.AUC()])
+              metrics=['acc'])
 
 
 # create data generator
@@ -41,11 +41,11 @@ validation_it = datagen.flow_from_directory('../../data/final_valid',
 
 # fit model
 print("Training Starting..")
-model.fit(train_it,validation_data=validation_it, steps_per_epoch=500, epochs=80, verbose=1)
+model.fit(train_it,validation_data=validation_it, steps_per_epoch=500, epochs=30, verbose=1)
 print("Training Completed..")
 # save model
 print("Saving model to disk in models/")
-model.save('../../models/200_80epochs_model.h5')
+model.save('../../models/model_v1.h5')
 
 print("Evalutaing model..")
 
