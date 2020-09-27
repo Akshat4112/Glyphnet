@@ -58,7 +58,10 @@ def take_input(text):
     image_path = img(text, '../../data/all_classes/')
     result = get_pred(image_path)
     print("This image is: ", result)
-    return result
+    print(type(result[0]))
+    if result[0]==0.0:
+        print("It is real")
+    return result[0]
 
 print(take_input('www.google.com'))
 
