@@ -6,7 +6,7 @@ To address the aforementioned problem,we introduced an unpaired homoglyph attack
 
 All data files under /data
 All notebook files under /notebooks
-All script files under /src/scripts
+All script files under /src
 All model files under models/
 All visualization under /visualizations
 
