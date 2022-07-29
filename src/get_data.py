@@ -51,10 +51,10 @@ print(len(domains_train), len(domains_valid), len(domains_test))
 
 print("Creating Directories for data schema..")
 
-# os.mkdir('../data/domain_pics')
-# os.mkdir('../data/domain_pics/train')
-# os.mkdir('../data/domain_pics/test')
-# os.mkdir('../data/domain_pics/valid')
+os.mkdir('../data/domain_pics')
+os.mkdir('../data/domain_pics/train')
+os.mkdir('../data/domain_pics/test')
+os.mkdir('../data/domain_pics/valid')
 
 print("Directories for data schema created..")
 
