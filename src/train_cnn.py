@@ -32,11 +32,11 @@ datagen = ImageDataGenerator(rescale=1./255)
 
 # prepare iterator
 print("Before datagen..")
-train_it = datagen.flow_from_directory('../../data/final_train',
+train_it = datagen.flow_from_directory('../data/final_train',
   class_mode='binary', batch_size=1, target_size=(256, 256))
 print("Datagen completed..")
 
-validation_it = datagen.flow_from_directory('../../data/final_valid',
+validation_it = datagen.flow_from_directory('../data/final_valid',
   class_mode='binary', batch_size=1, target_size=(256, 256))
 
 # fit model
@@ -45,13 +45,13 @@ model.fit(train_it,validation_data=validation_it, steps_per_epoch=500, epochs=30
 print("Training Completed..")
 # save model
 print("Saving model to disk in models/")
-model.save('../../models/model_v1.h5')
+model.save('../models/model_v1.h5')
 
 print("Evalutaing model..")
 
 # prepare iterator
 print("Before datagen..")
-test_it = datagen.flow_from_directory('../../data/final_test', class_mode='binary', batch_size=1, target_size=(256, 256))
+test_it = datagen.flow_from_directory('../data/final_test', class_mode='binary', batch_size=1, target_size=(256, 256))
 print("Datagen completed..")
 
 # evaluate model
