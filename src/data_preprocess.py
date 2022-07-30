@@ -1,10 +1,19 @@
 import os
 from os import path
 import shutil
+import argparse
 
-src = "../data/domain_pics/train/"
-dst = "../data/final_train/real/"
+parser = argparse.ArgumentParser(description="Parameters while pasing the argument..")
+parser.add_argument("--path_data", type=str, help="Define path for the data")
+path_arg  = parser.parse_args().path_data
+
+src = os.path.join(path_arg, "domain_pics", "train")
+dst = os.path.join(path_arg, "final_train", "real")l
+
+# src = "../data/domain_pics/train/"
+# dst = "../data/final_train/real/"
 print("Data moved from real train to final_train real..")
+
 
 cnt = 0
 #files = [i for i in os.listdir(src) if i.startswith("CTASK") and path.isfile(path.join(src, i))]

@@ -11,9 +11,7 @@ font = '../data/ARIAL.TTF'
 # BASE_DIR = ''
 
 parser = argparse.ArgumentParser(description="Parameters while pasing the argument..")
-
 parser.add_argument("--path_data", type=str, help="Define path for the data")
-
 path_arg  = parser.parse_args().path_data
 
 print(path_arg)
@@ -43,9 +41,6 @@ train_path = os.path.join(path_arg, "domains_train.txt")
 test_path = os.path.join(path_arg, "domains_test.txt")
 val_path = os.path.join(path_arg, "domains_val.txt")
 print(train_path)
-
-with open(train_path, "rb") as fp:
-    domains_train = pickle.load(fp)
 
 
 with open(train_path, "wb") as fp:
