@@ -74,6 +74,7 @@ domain_pics_folder_train_path = os.path.join(path_arg, "domain_pics", "train")
 domain_pics_folder_test_path = os.path.join(path_arg, "domain_pics", "test")
 domain_pics_folder_val_path = os.path.join(path_arg, "domain_pics", "valid")
 
+print(domain_pics_folder_train_path)
 
 if not os.path.exists(domain_pics_folder_path):
     os.mkdir(domain_pics_folder_path)
@@ -186,17 +187,17 @@ for folder in [final_train_path, final_train_real_path, final_train_phish_path, 
         os.mkdir(folder)
 
 
-# os.mkdir('../data/final_train')
-# os.mkdir('../data/final_train/real')
-# os.mkdir('../data/final_train/phish')
-#
-# os.mkdir('../data/final_valid')
-# os.mkdir('../data/final_valid/real')
-# os.mkdir('../data/final_valid/phish')
-#
-# os.mkdir('../data/final_test')
-# os.mkdir('../data/final_test/real')
-# os.mkdir('../data/final_test/phish')
+os.mkdir('../data/final_train')
+os.mkdir('../data/final_train/real')
+os.mkdir('../data/final_train/phish')
+
+os.mkdir('../data/final_valid')
+os.mkdir('../data/final_valid/real')
+os.mkdir('../data/final_valid/phish')
+
+os.mkdir('../data/final_test')
+os.mkdir('../data/final_test/real')
+os.mkdir('../data/final_test/phish')
 
 print("Get data completed..")
                         

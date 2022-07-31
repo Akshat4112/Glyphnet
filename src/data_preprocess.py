@@ -30,6 +30,7 @@ cnt = 0
 
 for src, dst in [(src_train, dst_train), (src_test, dst_test), (src_train_phish, dst_train_phish), (src_test_phish, dst_test_phish), (src_val, dst_val), (src_val_phish, dst_val_phish)]:
         files = [i for i in os.listdir(src)]
+        print(len(files))
         print(src, dst)
         for f in files:
                 shutil.copy(path.join(src, f), dst)
