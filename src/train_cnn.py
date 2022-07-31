@@ -13,7 +13,7 @@ wandb.init(project="HomoglyphDetection", entity="robofied")
 
 
 print(device_lib.list_local_devices())
-print(K.tensorflow_backend._get_available_gpus())
+print(K._get_available_gpus())
 
 model = models.Sequential()
 model.add(layers.Conv2D(32, (5, 5), activation='relu', input_shape=(256, 256, 3)))
