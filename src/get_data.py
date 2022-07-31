@@ -25,7 +25,7 @@ def img(text, path):
     #im_output = enhancer.enhance(1.5)
     #transposed  = img.transpose(Image.ROTATE_90)
 
-    path = os.path.join(path, text, ".png")
+    path = os.path.join(path, text + ".png")
     print("Path of img", path)
     img.save(path, 'PNG')
     
