@@ -24,8 +24,10 @@ def img(text, path):
     #enhancer = ImageEnhance.Contrast(img)
     #im_output = enhancer.enhance(1.5)
     #transposed  = img.transpose(Image.ROTATE_90)
+
+    path = os.path.join(path, text, ".png")
     print("Path of img", path)
-    img.save(path + text + '.png', 'PNG')
+    img.save(path, 'PNG')
     
 train = [dom[0] for dom in data['train']]
 test = [dom[0] for dom in data['test']]
