@@ -6,7 +6,11 @@ from keras import models
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.client import device_lib
-from keras import backend as K
+import tensorflow.keras.backend as K
+import wandb
+
+wandb.init(project="HomoglyphDetection", entity="robofied")
+
 
 print(device_lib.list_local_devices())
 print(K.tensorflow_backend._get_available_gpus())
