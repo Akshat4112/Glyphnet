@@ -26,7 +26,7 @@ def img(text, path):
     #transposed  = img.transpose(Image.ROTATE_90)
 
     path = os.path.join(path, text + ".png")
-    print("Path of img", path)
+    # print("Path of img", path)
     img.save(path, 'PNG')
     
 train = [dom[0] for dom in data['train']]
