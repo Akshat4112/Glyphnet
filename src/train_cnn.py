@@ -5,6 +5,11 @@ from keras import layers
 from keras import models
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
+from tensorflow.python.client import device_lib
+from keras import backend as K
+
+print(device_lib.list_local_devices())
+print(K.tensorflow_backend._get_available_gpus())
 
 model = models.Sequential()
 model.add(layers.Conv2D(32, (5, 5), activation='relu', input_shape=(256, 256, 3)))
