@@ -8,14 +8,16 @@ import tensorflow as tf
 from keras import layers, models, optimizers
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import load_model
-from keras.preprocessing.image import load_img
-from keras.preprocessing.image import img_to_array
+# from keras.preprocessing.image import load_img
+from tensorflow.keras.utils import load_img
+# from keras.preprocessing.image import img_to_array
+from tensorflow.keras.utils import img_to_array
 from keras.models import load_model
 import tensorflow.keras
 
 #model = load_model('../../models/30epochs_model.h5')
 #print("model Loaded")
-font = 'ARIAL.TTF'
+font = '../data/ARIAL.TTF'
 
 # # BASE_DIR = ''
 
@@ -47,7 +49,7 @@ def get_pred(image_path):
   # load the image
   img = load_image(image_path)
   # load model
-  model = load_model('../../models/model_v1.h5')
+  model = load_model('../models/model_v1.h5')
   # predict the class
   result = model.predict(img)
   print(result[0])
@@ -55,7 +57,7 @@ def get_pred(image_path):
 
 
 def take_input(text):
-    image_path = img(text, '../../data/all_classes/')
+    image_path = img(text, '../data/all_classes/')
     result = get_pred(image_path)
     print("This image is: ", result)
     print(type(result[0]))
