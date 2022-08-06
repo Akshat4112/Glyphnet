@@ -79,7 +79,7 @@ print("Datagen completed..")
 # evaluate model
 print("Evaluating Model..")
 
-_, acc = model.evaluate_generator(test_it, steps=500, verbose=0)
+_, acc, f1_score, precision, recall = model.evaluate_generator(test_it, steps=500, verbose=0)
 print('> %.3f' % (acc * 100.0))
 
 print("Computing Precision and Recall for Classification.")

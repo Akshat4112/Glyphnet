@@ -6,23 +6,34 @@ import pandas as pd
 import time, multiprocessing
 from multiprocessing import Process
 import os
+import argparse
 
-font_path = 'ARIAL.TTF'
-file_path = 'dataset_final.csv'
+parser = argparse.ArgumentParser(description="Parameters while pasing the argument..")
+parser.add_argument("--path_data", type=str, help="Define path for the data")
+path_arg  = parser.parse_args().path_data
+
+
+# font_path = '../data/ARIAL.TTF'
+# file_path = '../data/dataset_final.csv'
+
+font_path = os.path.join(path_arg, "ARIAL.TTF")
+file_path = os.path.join(path_arg, "dataset_final.csv")
 
 
 try:
-    os.makedirs('real')
+    os.makedirs(os.path.join(path_arg, "real"))
 except OSError as e:
     print('Real Directory Exists!')
 
 try:
-    os.makedirs('fake')
+    os.makedirs(os.path.join(path_arg, "fake"))
 except OSError as e:
     print('Fake Directory Exists!')
 
 
-data = pd.read_csv(file_path, nrows=100000)
+data = pd.read_csv(file_path, nrows=2000000)
+
+print(len(data))
 
 def img(text, path):     
     img = Image.new('L', (256, 256))
@@ -36,10 +47,10 @@ def img(text, path):
 
 
 def generate_real(data):
-  data.apply(img, path = 'real/')
+  data.apply(img, path = os.path.join(path_arg, "real"))
 
 def generate_fake(data):
-  data.apply(img, path = 'fake/')
+  data.apply(img, path = os.path.join(path_arg, "fake"))
 
 
 def multiprocessing_func_1(data):
@@ -81,13 +92,13 @@ if __name__ == '__main__':
     processes_1 = []
     processes_2 = []
 
-    p1 = multiprocessing.Process(target=multiprocessing_func_1, args=(data.iloc[:25000, 0],))
+    p1 = multiprocessing.Process(target=multiprocessing_func_1, args=(data.iloc[:500000, 0],))
     processes_1.append(p1)
-    p2 = multiprocessing.Process(target=multiprocessing_func_3, args=(data.iloc[25000:50000, 0],))
+    p2 = multiprocessing.Process(target=multiprocessing_func_3, args=(data.iloc[500000:1000000, 0],))
     processes_1.append(p2)
-    p3 = multiprocessing.Process(target=multiprocessing_func_5, args=(data.iloc[50000:75000, 0],))
+    p3 = multiprocessing.Process(target=multiprocessing_func_5, args=(data.iloc[1000000:1500000, 0],))
     processes_1.append(p3)
-    p4 = multiprocessing.Process(target=multiprocessing_func_7, args=(data.iloc[75000:, 0],))
+    p4 = multiprocessing.Process(target=multiprocessing_func_7, args=(data.iloc[1500000:, 0],))
     processes_1.append(p4)
     p1.start()
     p2.start()
@@ -97,13 +108,13 @@ if __name__ == '__main__':
     for process in processes_1:
         process.join()
             
-    p1 = multiprocessing.Process(target=multiprocessing_func_2, args=(data.iloc[:25000, 1],))
+    p1 = multiprocessing.Process(target=multiprocessing_func_2, args=(data.iloc[:500000, 1],))
     processes_2.append(p1)
-    p2 = multiprocessing.Process(target=multiprocessing_func_4, args=(data.iloc[25000:50000, 1],))
+    p2 = multiprocessing.Process(target=multiprocessing_func_4, args=(data.iloc[500000:1000000, 1],))
     processes_2.append(p2)
-    p3 = multiprocessing.Process(target=multiprocessing_func_6, args=(data.iloc[50000:75000, 1],))
+    p3 = multiprocessing.Process(target=multiprocessing_func_6, args=(data.iloc[1000000:1500000, 1],))
     processes_2.append(p3)
-    p4 = multiprocessing.Process(target=multiprocessing_func_8, args=(data.iloc[75000:, 1],))
+    p4 = multiprocessing.Process(target=multiprocessing_func_8, args=(data.iloc[1500000:, 1],))
     processes_2.append(p4)
     p1.start()
     p2.start()

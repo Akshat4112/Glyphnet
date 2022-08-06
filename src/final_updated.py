@@ -2,6 +2,12 @@ import time, multiprocessing
 from multiprocessing import Process, Manager
 import pandas as pd
 import re, random
+import argparse
+import os
+
+parser = argparse.ArgumentParser(description="Parameters while pasing the argument..")
+parser.add_argument("--path_data", type=str, help="Define path for the data")
+path_arg  = parser.parse_args().path_data
 
 
 homo_1 = []
@@ -83,10 +89,12 @@ def homo_gen_2(domain):
 				file_object.write("\n")
 			file_object.write(domain)
 
-with open("domains_final.txt", "r") as f:
-    domains_1 = f.read().splitlines()[:1000000]
+domain_file = os.path.join(path_arg, "domains_final.txt")
 
-with open("domains_final.txt", "r") as f:
+with open(domain_file, "r") as f:
+	domains_1 = f.read().splitlines()[:1000000]
+
+with open(domain_file, "r") as f:
 	domains_2 = f.read().splitlines()[1000000:2000000]
 
 
