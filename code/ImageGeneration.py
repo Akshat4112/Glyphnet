@@ -31,7 +31,7 @@ except OSError as e:
     print('Fake Directory Exists!')
 
 
-data = pd.read_csv(file_path, nrows=2000)
+data = pd.read_csv(file_path, nrows=200000)
 
 print(len(data))
 
