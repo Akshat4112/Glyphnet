@@ -12,6 +12,7 @@ from wandb.keras import WandbCallback
 import argparse
 import os
 from datetime import datetime
+from attentionModule import attach_attention_module
 
 class NeuralNetwork:
   def __init__(self) -> None:
@@ -68,22 +69,33 @@ class NeuralNetwork:
     model.save(name)
 
   def AttentionCNN(self):
-    model = models.Sequential()
-    model.add(layers.Conv2D(32, (5, 5), activation='relu', input_shape=(256, 256, 3)))
-    model.add(layers.MaxPool2D(2, 2))
-    model.add(layers.BatchNormalization())
-    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-    model.add(layers.MaxPool2D(2, 2))
-    model.add(layers.BatchNormalization())
-    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-    model.add(layers.MaxPool2D(2, 2))
-    model.add(layers.Conv2D(128, (3, 3), activation='relu'))
-    model.add(layers.MaxPool2D(2, 2))
-    model.add(layers.Flatten())
-    model.add(layers.Dense(128, activation='relu'))
-    model.add(layers.Dense(1, activation='sigmoid'))
+    inputs = keras.Input(shape=(256, 256, 3))
 
+    x = layers.Rescaling(1.0 / 255)(inputs)
+    x = layers.Conv2D(32, (5, 5), activation='relu')(x)
+    x = layers.MaxPool2D(2, 2)(x)
+    x = attach_attention_module(x, attention_module='cbam_block')
+
+    x = layers.BatchNormalization()(x)
+    x = layers.Conv2D(64, (3, 3), activation='relu')(x)
+    x = layers.MaxPool2D(2, 2)(x)
+    x = attach_attention_module(x, attention_module='cbam_block')
+
+    x = layers.BatchNormalization()(x)
+    x = layers.Conv2D(64, (3, 3), activation='relu')(x)
+    x = layers.MaxPool2D(2, 2)(x)
+    x = attach_attention_module(x, attention_module='cbam_block')
+
+    x = layers.Conv2D(128, (3, 3), activation='relu')(x)
+    x = layers.MaxPool2D(2, 2)(x)
+    x = attach_attention_module(x, attention_module='cbam_block')
     
+    x = layers.Flatten()(x)
+    x = layers.Dense(128, activation='relu')(x)
+
+    outputs = layers.Dense(1, activation='sigmoid')(x)
+    model = keras.Model(inputs, outputs)
+
     model.compile(loss='binary_crossentropy',
                   optimizer=optimizers.RMSprop(lr=1e-4),
                   metrics=['acc'])
