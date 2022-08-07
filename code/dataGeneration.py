@@ -92,10 +92,10 @@ def homo_gen_2(domain):
 domain_file = os.path.join(path_arg, "domains_final.txt")
 
 with open(domain_file, "r") as f:
-	domains_1 = f.read().splitlines()[:1000]
+	domains_1 = f.read().splitlines()[:100000]
 
 with open(domain_file, "r") as f:
-	domains_2 = f.read().splitlines()[1000:2000]
+	domains_2 = f.read().splitlines()[100000:200000]
 
 
 homo = []
