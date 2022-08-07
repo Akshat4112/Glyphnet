@@ -1,0 +1,51 @@
+/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/keras/optimizers/optimizer_v2/rmsprop.py:135: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  super(RMSprop, self).__init__(name, **kwargs)
+[34m[1mwandb[39m[22m: [33mWARNING[39m The save_model argument by default saves the model in the HDF5 format that cannot save custom objects like subclassed models and custom layers. This behavior will be deprecated in a future release in favor of the SavedModel format. Meanwhile, the HDF5 model is saved as W&B files and the SavedModel as W&B Artifacts.
+WARNING:tensorflow:From /home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/ops/nn_ops.py:5219: tensor_shape_from_node_def_name (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.graph_util.tensor_shape_from_node_def_name`
+[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 6152985296003085373
+xla_global_id: -1
+]
+Before datagen..
+Found 2800 images belonging to 2 classes.
+Datagen completed..
+Found 800 images belonging to 2 classes.
+Data Generation Completed
+Epoch 1/5
+
+
+
+50/50 [==============================] - ETA: 0s - loss: 1.0700 - acc: 0.4600
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 4 of 4). These functions will not be directly callable after loading.
+50/50 [==============================] - 23s 444ms/step - loss: 1.0700 - acc: 0.4600 - val_loss: 0.6932 - val_acc: 0.5038
+Epoch 2/5
+50/50 [==============================] - 22s 437ms/step - loss: 0.7418 - acc: 0.6000 - val_loss: 0.6958 - val_acc: 0.5000
+Epoch 3/5
+
+
+
+
+50/50 [==============================] - 23s 463ms/step - loss: 0.7960 - acc: 0.4200 - val_loss: 0.6966 - val_acc: 0.5000
+Epoch 4/5
+
+
+
+50/50 [==============================] - 22s 451ms/step - loss: 0.7687 - acc: 0.3800 - val_loss: 0.6936 - val_acc: 0.4900
+Epoch 5/5
+
+
+
+50/50 [==============================] - ETA: 0s - loss: 0.7373 - acc: 0.5400
+Traceback (most recent call last):
+  File "/home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/train.py", line 160, in <module>
+    obj.plotGraphs()
+  File "/home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/train.py", line 116, in plotGraphs
+    plt.plot(history.history['accuracy'])
+
+50/50 [==============================] - 22s 437ms/step - loss: 0.7373 - acc: 0.5400 - val_loss: 0.6962 - val_acc: 0.5000
