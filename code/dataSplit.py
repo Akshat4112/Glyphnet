@@ -1,8 +1,9 @@
 import shutil
 import os 
 
-len_real = len(os.listdir('../data/real'))
-len_fake = len(os.listdir('../data/fake'))
+BASE_PATH = '../data/'
+len_real = len(os.listdir(BASE_PATH +  'real'))
+len_fake = len(os.listdir(BASE_PATH + 'fake'))
 
 print(len_real)
 
@@ -16,71 +17,72 @@ len_real_test = int(0.1*len_real)
 len_fake_test = int(0.1*len_fake)
 
 
-os.mkdir('../data/train')
-os.mkdir('../data/test')
-os.mkdir('../data/valid')
+os.mkdir(BASE_PATH + 'train')
+os.mkdir(BASE_PATH + 'test')
+os.mkdir(BASE_PATH + 'test')
+os.mkdir(BASE_PATH + 'valid')
 
-os.mkdir('../data/train/real')
-os.mkdir('../data/train/fake')
+os.mkdir(BASE_PATH + 'train/real')
+os.mkdir(BASE_PATH + 'train/fake')
 
-os.mkdir('../data/test/real')
-os.mkdir('../data/test/fake')
+os.mkdir(BASE_PATH + 'test/real')
+os.mkdir(BASE_PATH + 'test/fake')
 
-os.mkdir('../data/valid/real')
-os.mkdir('../data/valid/fake')
+os.mkdir(BASE_PATH + 'valid/real')
+os.mkdir(BASE_PATH + 'valid/fake')
 
 
 
 print(len_real_train)
 
 c = 0
-for item in os.listdir('../data/real/'):
+for item in os.listdir(BASE_PATH + 'real/'):
     if c==len_real_train:
         break
     else:
-        shutil.move('../data/real/'+item, '../data/train/real/')
+        shutil.move(BASE_PATH + 'real/'+item, BASE_PATH + 'train/real/')
         c+=1
 
 c = 0        
-for item in os.listdir('../data/real/'):
+for item in os.listdir(BASE_PATH + 'real/'):
     if c==len_real_test:
         break
     else:
-        shutil.move('../data/real/'+item, '../data/test/real/')
+        shutil.move(BASE_PATH + 'real/'+item, BASE_PATH + 'test/real/')
         c+=1
 
 c = 0
-for item in os.listdir('../data/real/'):
+for item in os.listdir(BASE_PATH + 'real/'):
     if c==len_real_valid:
         break
     else:
-        shutil.move('../data/real/'+item, '../data/valid/real/')        
+        shutil.move(BASE_PATH + 'real/'+item, BASE_PATH +'valid/real/')        
         c+=1
 
 
 c = 0
-for item in os.listdir('../data/fake/'):
+for item in os.listdir(BASE_PATH + 'fake/'):
     if c==len_fake_train:
         break
     else:
-        shutil.move('../data/fake/'+item, '../data/train/fake/')
+        shutil.move(BASE_PATH + 'fake/'+item,  BASE_PATH + 'train/fake/')
         c+=1
 
 c = 0        
-for item in os.listdir('../data/fake/'):
+for item in os.listdir(BASE_PATH + 'fake/'):
     if c==len_fake_test:
         break
     else:
-        shutil.move('../data/fake/'+item, '../data/test/fake/')
+        shutil.move(BASE_PATH + 'fake/'+item, BASE_PATH + 'test/fake/')
         c+=1
 
 c = 0
-for item in os.listdir('../data/fake/'):
+for item in os.listdir(BASE_PATH + 'fake/'):
     if c==len_fake_valid:
         break
     else:
-        shutil.move('../data/fake/'+item, '../data/valid/fake/')        
+        shutil.move(BASE_PATH + 'fake/'+item, BASE_PATH + 'valid/fake/')        
         c+=1
 
-os.rmdir('../data/fake')
-os.rmdir('../data/real')
+os.rmdir(BASE_PATH + 'fake')
+os.rmdir(BASE_PATH + 'real')
