@@ -17,3 +17,9 @@ All visualization under /visualizations
 3. Run train_cnn.py to train a Convolutional NN, model is saved in /models
 4. Run predict_cnn.py to make inference to a model
 5. Run app.py to run web app for the same.
+
+
+1. dataGenetaion.py
+2. ImageGeneration.py
+3. dataSplit.py
+4. 

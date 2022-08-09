@@ -1,0 +1,158 @@
+2022-08-06 15:57:56,205 INFO    StreamThr :96738 [internal.py:wandb_internal():90] W&B internal server running at pid: 96738, started at: 2022-08-06 15:57:56.204819
+2022-08-06 15:57:56,214 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: status
+2022-08-06 15:57:56,214 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: status
+2022-08-06 15:57:56,216 INFO    WriterThread:96738 [datastore.py:open_for_write():75] open: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/run-2b205bw9.wandb
+2022-08-06 15:57:56,217 DEBUG   SenderThread:96738 [sender.py:send():302] send: header
+2022-08-06 15:57:56,217 DEBUG   SenderThread:96738 [sender.py:send():302] send: run
+2022-08-06 15:57:56,923 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: check_version
+2022-08-06 15:57:56,926 INFO    SenderThread:96738 [dir_watcher.py:__init__():216] watching files in: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files
+2022-08-06 15:57:56,926 INFO    SenderThread:96738 [sender.py:_start_run_threads():913] run started: 2b205bw9 with start time 1659794276.200656
+2022-08-06 15:57:56,926 DEBUG   SenderThread:96738 [sender.py:send():302] send: summary
+2022-08-06 15:57:56,927 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-06 15:57:56,927 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: check_version
+2022-08-06 15:57:57,102 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: run_start
+2022-08-06 15:57:57,103 DEBUG   HandlerThread:96738 [meta.py:__init__():35] meta init
+2022-08-06 15:57:57,103 DEBUG   HandlerThread:96738 [meta.py:__init__():50] meta init done
+2022-08-06 15:57:57,104 DEBUG   HandlerThread:96738 [meta.py:probe():216] probe
+2022-08-06 15:57:57,105 DEBUG   HandlerThread:96738 [meta.py:_setup_git():206] setup git
+2022-08-06 15:57:57,113 DEBUG   HandlerThread:96738 [meta.py:_setup_git():213] setup git done
+2022-08-06 15:57:57,113 DEBUG   HandlerThread:96738 [meta.py:_save_code():88] save code
+2022-08-06 15:57:57,116 DEBUG   HandlerThread:96738 [meta.py:_save_code():109] save code done
+2022-08-06 15:57:57,117 DEBUG   HandlerThread:96738 [meta.py:_save_patches():126] save patches
+2022-08-06 15:57:57,930 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/wandb-summary.json
+2022-08-06 15:57:57,930 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/diff.patch
+2022-08-06 15:57:57,931 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/code/code/train.py
+2022-08-06 15:57:57,931 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/code
+2022-08-06 15:57:57,931 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/code/code
+2022-08-06 15:57:58,930 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/diff.patch
+2022-08-06 15:57:59,810 DEBUG   HandlerThread:96738 [meta.py:_save_patches():168] save patches done
+2022-08-06 15:57:59,810 DEBUG   HandlerThread:96738 [meta.py:_save_pip():54] save pip
+2022-08-06 15:57:59,811 DEBUG   HandlerThread:96738 [meta.py:_save_pip():68] save pip done
+2022-08-06 15:57:59,811 DEBUG   HandlerThread:96738 [meta.py:probe():254] probe done
+2022-08-06 15:57:59,879 DEBUG   SenderThread:96738 [sender.py:send():302] send: files
+2022-08-06 15:57:59,879 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file wandb-metadata.json with policy now
+2022-08-06 15:57:59,888 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file code/code/train.py with policy now
+2022-08-06 15:57:59,895 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-06 15:57:59,897 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file diff.patch with policy now
+2022-08-06 15:57:59,900 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: stop_status
+2022-08-06 15:57:59,934 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/diff.patch
+2022-08-06 15:57:59,934 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/wandb-metadata.json
+2022-08-06 15:57:59,935 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/requirements.txt
+2022-08-06 15:58:00,626 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: get_summary
+2022-08-06 15:58:00,927 DEBUG   SenderThread:96738 [sender.py:send():302] send: telemetry
+2022-08-06 15:58:00,931 DEBUG   SenderThread:96738 [sender.py:send():302] send: telemetry
+2022-08-06 15:58:00,932 DEBUG   SenderThread:96738 [sender.py:send():302] send: telemetry
+2022-08-06 15:58:00,932 DEBUG   SenderThread:96738 [sender.py:send():302] send: files
+2022-08-06 15:58:00,932 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file model-best.h5 with policy live
+2022-08-06 15:58:00,932 DEBUG   SenderThread:96738 [sender.py:send():302] send: telemetry
+2022-08-06 15:58:00,935 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:01,544 DEBUG   SenderThread:96738 [sender.py:send():302] send: summary
+2022-08-06 15:58:01,548 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-06 15:58:01,935 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/wandb-summary.json
+2022-08-06 15:58:02,056 INFO    Thread-16 :96738 [upload_job.py:push():138] Uploaded file /tmp/tmpub_8cpwmwandb/uah3474k-wandb-metadata.json
+2022-08-06 15:58:02,073 INFO    Thread-17 :96738 [upload_job.py:push():138] Uploaded file /tmp/tmpub_8cpwmwandb/6uw2pyza-code/code/train.py
+2022-08-06 15:58:02,937 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:04,116 DEBUG   SenderThread:96738 [sender.py:send():302] send: files
+2022-08-06 15:58:04,117 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json with policy now
+2022-08-06 15:58:04,119 DEBUG   SenderThread:96738 [sender.py:send():302] send: summary
+2022-08-06 15:58:04,131 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-06 15:58:04,940 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:04,941 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/wandb-summary.json
+2022-08-06 15:58:04,941 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json
+2022-08-06 15:58:04,945 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/media/graph
+2022-08-06 15:58:04,945 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/media
+2022-08-06 15:58:05,937 INFO    Thread-19 :96738 [upload_job.py:push():138] Uploaded file /tmp/tmpub_8cpwmwandb/1kw0kzip-media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json
+2022-08-06 15:58:06,947 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:07,973 INFO    Thread-20 :96738 [upload_job.py:push():138] Uploaded file /tmp/tmpub_8cpwmwandb/lwxalzwu-media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json
+2022-08-06 15:58:08,954 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:10,847 INFO    Thread-18 :96738 [upload_job.py:push():138] Uploaded file /tmp/tmpub_8cpwmwandb/15mw30oo-diff.patch
+2022-08-06 15:58:10,956 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:12,959 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:14,963 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:15,933 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-06 15:58:15,934 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: stop_status
+2022-08-06 15:58:16,981 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:18,988 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:20,990 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:22,991 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:24,995 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:25,267 DEBUG   SenderThread:96738 [sender.py:send():302] send: stats
+2022-08-06 15:58:26,998 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:26,999 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/config.yaml
+2022-08-06 15:58:29,004 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:31,738 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-06 15:58:31,739 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: stop_status
+2022-08-06 15:58:32,008 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:34,010 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:34,701 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-06 15:58:34,701 DEBUG   SenderThread:96738 [sender.py:send():302] send: exit
+2022-08-06 15:58:34,701 INFO    SenderThread:96738 [sender.py:send_exit():438] handling exit code: 255
+2022-08-06 15:58:34,702 INFO    SenderThread:96738 [sender.py:send_exit():440] handling runtime: 37
+2022-08-06 15:58:34,702 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-06 15:58:34,702 INFO    SenderThread:96738 [sender.py:send_exit():446] send defer
+2022-08-06 15:58:34,703 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: poll_exit
+2022-08-06 15:58:34,703 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: defer
+2022-08-06 15:58:34,703 INFO    HandlerThread:96738 [handler.py:handle_request_defer():164] handle defer: 0
+2022-08-06 15:58:34,704 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: defer
+2022-08-06 15:58:34,704 INFO    SenderThread:96738 [sender.py:send_request_defer():455] handle sender defer: 0
+2022-08-06 15:58:34,704 INFO    SenderThread:96738 [sender.py:transition_state():459] send defer: 1
+2022-08-06 15:58:34,704 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: defer
+2022-08-06 15:58:34,705 INFO    HandlerThread:96738 [handler.py:handle_request_defer():164] handle defer: 1
+2022-08-06 15:58:34,725 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: defer
+2022-08-06 15:58:34,725 INFO    SenderThread:96738 [sender.py:send_request_defer():455] handle sender defer: 1
+2022-08-06 15:58:34,725 INFO    SenderThread:96738 [sender.py:transition_state():459] send defer: 2
+2022-08-06 15:58:34,726 DEBUG   SenderThread:96738 [sender.py:send():302] send: stats
+2022-08-06 15:58:34,726 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: defer
+2022-08-06 15:58:34,727 INFO    HandlerThread:96738 [handler.py:handle_request_defer():164] handle defer: 2
+2022-08-06 15:58:34,727 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: defer
+2022-08-06 15:58:34,727 INFO    SenderThread:96738 [sender.py:send_request_defer():455] handle sender defer: 2
+2022-08-06 15:58:34,727 INFO    SenderThread:96738 [sender.py:transition_state():459] send defer: 3
+2022-08-06 15:58:34,728 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: defer
+2022-08-06 15:58:34,728 INFO    HandlerThread:96738 [handler.py:handle_request_defer():164] handle defer: 3
+2022-08-06 15:58:34,728 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: defer
+2022-08-06 15:58:34,728 INFO    SenderThread:96738 [sender.py:send_request_defer():455] handle sender defer: 3
+2022-08-06 15:58:34,729 INFO    SenderThread:96738 [sender.py:transition_state():459] send defer: 4
+2022-08-06 15:58:34,729 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: defer
+2022-08-06 15:58:34,729 INFO    HandlerThread:96738 [handler.py:handle_request_defer():164] handle defer: 4
+2022-08-06 15:58:34,730 DEBUG   SenderThread:96738 [sender.py:send():302] send: summary
+2022-08-06 15:58:34,730 INFO    SenderThread:96738 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-06 15:58:34,731 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: defer
+2022-08-06 15:58:34,731 INFO    SenderThread:96738 [sender.py:send_request_defer():455] handle sender defer: 4
+2022-08-06 15:58:34,731 INFO    SenderThread:96738 [sender.py:transition_state():459] send defer: 5
+2022-08-06 15:58:34,731 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: defer
+2022-08-06 15:58:34,731 INFO    HandlerThread:96738 [handler.py:handle_request_defer():164] handle defer: 5
+2022-08-06 15:58:34,732 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: defer
+2022-08-06 15:58:34,732 INFO    SenderThread:96738 [sender.py:send_request_defer():455] handle sender defer: 5
+2022-08-06 15:58:34,732 INFO    SenderThread:96738 [sender.py:transition_state():459] send defer: 6
+2022-08-06 15:58:34,732 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: defer
+2022-08-06 15:58:34,732 INFO    HandlerThread:96738 [handler.py:handle_request_defer():164] handle defer: 6
+2022-08-06 15:58:34,733 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: defer
+2022-08-06 15:58:34,733 INFO    SenderThread:96738 [sender.py:send_request_defer():455] handle sender defer: 6
+2022-08-06 15:58:34,805 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-06 15:58:35,013 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/wandb-summary.json
+2022-08-06 15:58:36,014 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:36,992 INFO    SenderThread:96738 [sender.py:transition_state():459] send defer: 7
+2022-08-06 15:58:36,993 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: poll_exit
+2022-08-06 15:58:36,994 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: defer
+2022-08-06 15:58:36,994 INFO    HandlerThread:96738 [handler.py:handle_request_defer():164] handle defer: 7
+2022-08-06 15:58:36,994 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: defer
+2022-08-06 15:58:36,995 INFO    SenderThread:96738 [sender.py:send_request_defer():455] handle sender defer: 7
+2022-08-06 15:58:36,995 INFO    SenderThread:96738 [dir_watcher.py:finish():362] shutting down directory watcher
+2022-08-06 15:58:37,015 INFO    Thread-12 :96738 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log
+2022-08-06 15:58:37,016 INFO    SenderThread:96738 [dir_watcher.py:finish():392] scan: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files
+2022-08-06 15:58:37,016 INFO    SenderThread:96738 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/output.log output.log
+2022-08-06 15:58:37,016 INFO    SenderThread:96738 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/wandb-metadata.json wandb-metadata.json
+2022-08-06 15:58:37,017 INFO    SenderThread:96738 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/wandb-summary.json wandb-summary.json
+2022-08-06 15:58:37,017 INFO    SenderThread:96738 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/requirements.txt requirements.txt
+2022-08-06 15:58:37,017 INFO    SenderThread:96738 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/diff.patch diff.patch
+2022-08-06 15:58:37,018 INFO    SenderThread:96738 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/config.yaml config.yaml
+2022-08-06 15:58:37,018 INFO    SenderThread:96738 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/code/code/train.py code/code/train.py
+2022-08-06 15:58:37,018 INFO    SenderThread:96738 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220806_155756-2b205bw9/files/media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json
+2022-08-06 15:58:37,018 INFO    SenderThread:96738 [sender.py:transition_state():459] send defer: 8
+2022-08-06 15:58:37,023 DEBUG   HandlerThread:96738 [handler.py:handle_request():141] handle_request: defer
+2022-08-06 15:58:37,024 INFO    HandlerThread:96738 [handler.py:handle_request_defer():164] handle defer: 8
+2022-08-06 15:58:37,029 DEBUG   SenderThread:96738 [sender.py:send_request():316] send_request: defer
+2022-08-06 15:58:37,029 INFO    SenderThread:96738 [sender.py:send_request_defer():455] handle sender defer: 8
+2022-08-06 15:58:37,029 INFO    SenderThread:96738 [file_pusher.py:finish():171] shutting down file pusher
+2022-08-06 15:58:37,112 INFO    MainThread:96738 [internal.py:handle_exit():80] Internal process exited
+2022-08-06 15:58:37,113 WARNING MsgRouterThr:96738 [router.py:message_loop():73] EOFError seen in message_loop

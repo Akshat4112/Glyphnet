@@ -1,0 +1,22 @@
+{
+    "os": "Linux-5.15.0-43-generic-x86_64-with-glibc2.35",
+    "python": "3.10.4",
+    "heartbeatAt": "2022-08-06T13:57:57.104077",
+    "startedAt": "2022-08-06T13:57:56.182661",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/train.py",
+    "codePath": "code/train.py",
+    "git": {
+        "remote": "https://github.com/Akshat4112/Homoglyph_Phishing_Detection.git",
+        "commit": "caf8f2130b8efef2ac8d2a77106f967570e1f9fb"
+    },
+    "email": "akshat41121995@gmail.com",
+    "root": "/home/akshat/Documents/Github/Homoglyph_Phishing_Detection",
+    "host": "akshat",
+    "username": "akshat",
+    "executable": "/home/akshat/Documents/Github/homo_env/bin/python3"
+}
