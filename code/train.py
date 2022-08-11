@@ -42,7 +42,7 @@ class NeuralNetwork:
 
     wandb.config = {"learning_rate": 1e-4,
                     "epochs": 30,
-                    "batch_size": 1}
+                    "batch_size": 64}
 
     model = models.Sequential()
     model.add(layers.Conv2D(32, (5, 5), activation='relu', input_shape=(256, 256, 3)))
@@ -64,7 +64,7 @@ class NeuralNetwork:
                   optimizer=optimizers.RMSprop(lr=1e-4),
                   metrics=['acc'])
     callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3)
-    self.history = model.fit(self.train_it,validation_data=self.validation_it, steps_per_epoch=50, epochs=5, verbose=1, callbacks=[WandbCallback(), callback])
+    self.history = model.fit(self.train_it,validation_data=self.validation_it, steps_per_epoch=50, epochs=50, batch_size=64, verbose=1, callbacks=[WandbCallback(), callback])
     
     # save model
     self.name = '../models/modelSimpleCNN' + str(datetime.now()) + '.h5'
@@ -103,7 +103,7 @@ class NeuralNetwork:
                   metrics=['acc'])
     callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3)
 
-    self.history = model.fit(self.train_it,validation_data=self.validation_it, steps_per_epoch=500, epochs=5, verbose=1, callbacks=[WandbCallback(), callback])
+    self.history = model.fit(self.train_it,validation_data=self.validation_it, steps_per_epoch=500, epochs=50, batch_size=64, verbose=1, callbacks=[WandbCallback(), callback])
     
     # save model
     self.name = '../models/modelAttentionCNN' + str(datetime.now()) + '.h5'
@@ -155,6 +155,16 @@ class NeuralNetwork:
 
 obj = NeuralNetwork()
 obj.DataGenerator('../data/train', '../data/valid')
+
 print("Data Generation Completed")
+
 obj.SimpleCNN()
 obj.plotGraphs()
+
+print("Simple CNN Completed. ")
+print("Attention CNN Started ")
+
+obj.AttentionCNN()
+obj.plotGraphs()
+
+print("Attention CNN Completed")

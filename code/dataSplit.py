@@ -19,7 +19,6 @@ len_fake_test = int(0.1*len_fake)
 
 os.mkdir(BASE_PATH + 'train')
 os.mkdir(BASE_PATH + 'test')
-os.mkdir(BASE_PATH + 'test')
 os.mkdir(BASE_PATH + 'valid')
 
 os.mkdir(BASE_PATH + 'train/real')
