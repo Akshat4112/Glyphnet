@@ -1,7 +1,13 @@
 import shutil
-import os 
+import os
+import argparse
 
-BASE_PATH = '../data/'
+# BASE_PATH = '../data/'
+
+parser = argparse.ArgumentParser(description="Parameters while pasing the argument..")
+parser.add_argument("--path_data", type=str, help="Define path for the data")
+BASE_PATH  = parser.parse_args().path_data
+
 len_real = len(os.listdir(BASE_PATH +  'real'))
 len_fake = len(os.listdir(BASE_PATH + 'fake'))
 

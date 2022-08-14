@@ -6,20 +6,38 @@ To address the aforementioned problem,we introduced an unpaired homoglyph attack
 
 All data files under /data
 All notebook files under /notebooks
-All script files under /src
+All script files under /code
 All model files under models/
 All visualization under /visualizations
 
-### Process to run 
+## Process to run 
 
-1. Run get_data.py to download data
-2. Run data_preprocess.py to create images from data
-3. Run train_cnn.py to train a Convolutional NN, model is saved in /models
-4. Run predict_cnn.py to make inference to a model
-5. Run app.py to run web app for the same.
+### Data generation
+1. Run dataGeneration.py to prepare the data which will create a CSV. It accepts an path argument for data.
+It uses domains_final.txt which is already present in the data folder.
+
+   - ``python code/dataGeneration.py --path_data <path_for_data>``
+
+   
+2. Run ImageGeneration.py to create images from CSV file created at step 1. It will create directories of real and fake in the dataset folder.
+
+    - ``python code/ImageGeneration.py --path_data <path_for_data>``
+   
+
+3. Run dataSplit.py to to split the data into train, val, test.
+
+    - ``python code/dataSplit.py --path_data <path_for_data>``
+
+Note -: You can also directly use th dataset present in our assets<link> if you dont want to generate from scratch.
+
+### Model
 
 
-1. dataGenetaion.py
-2. ImageGeneration.py
-3. dataSplit.py
-4. 
+
+### Training the model
+
+- Run the train.py
+
+
+
+
