@@ -5,10 +5,26 @@ Cyber attacks are meant to deceive machines in believing something which doesn�
 To address the aforementioned problem,we introduced an unpaired homoglyph attack detection system using a *Convolutional Neural Network*. Our model achieves state-of-the-art in detecting in domain spoof homoglyphs and process spoof homoglyphs showing 0.93 AUC and 0.98 AUC respectively.
 
 All data files under /data
+
+#### Directory structure of data folder 
+
+│   train
+
+      -real
+      -phish
+│   valid
+
+      -real
+      -phish
+│   test
+
+      -real
+      -phish
+
 All notebook files under /notebooks
 All script files under /code
 All model files under models/
-All visualization under /visualizations
+
 
 ## Dependencies
 
@@ -44,7 +60,12 @@ It uses domains_final.txt which is already present in the data folder.
 
     - ``python code/dataSplit.py --path_data <path_for_data>``
 
-Note -: You can also directly use th dataset present in our assets<link> if you dont want to generate from scratch.
+Images will look like this -:
+
+![img_1.png](resources/img_1.png)
+
+**_Note_** -: You can also directly use th dataset present in our assets<link> if you dont want to generate from scratch.
+You can modify the script in ImageGeneration.py, if you want to generate different/extend data.
 
 ### Model
 
@@ -56,7 +77,7 @@ The rendered images are then used as input to the CNN to learn the desired visua
 as edges, curves, and strokes. Each convolutional layer is paired with a max-pooling layer to perform dimensionality
 reduction on the learned features. This model is developed in keras. Each convolution block is followed by CBAM attention
 
-![img.png](img.png)
+![img.png](resources/img.png)
 
 #### Experimental Settings
 For the training part, we used binary cross-entropy as a Loss Function. We have used RMSProp Optimizer to optimize the
@@ -66,6 +87,11 @@ for 30 epochs with early stopping. We trained with a batch size of 256.
 - Run the train.py
 
 ```python train.py```
+
+**_Note_** -: If you wish to use our model for your custom data, you can do it easily by maintaining the directory
+[structure for the data](#directory-structure-of-data-folder).
+
+
 
 ## License
 
