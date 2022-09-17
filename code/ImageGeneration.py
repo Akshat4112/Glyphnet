@@ -31,7 +31,7 @@ except OSError as e:
     print('Fake Directory Exists!')
 
 
-data = pd.read_csv(file_path, nrows=200000)
+data = pd.read_csv(file_path, nrows=2000000)
 
 print(len(data))
 
@@ -111,9 +111,9 @@ if __name__ == '__main__':
             
     p1 = multiprocessing.Process(target=multiprocessing_func_2, args=(data.iloc[:500000, 1],))
     processes_2.append(p1)
-    p2 = multiprocessing.Process(target=multiprocessing_func_4, args=(data.iloc[500000:1000000, 1],))
+    p2 = multiprocessing.Process(target=multiprocessing_func_4, args=(data.iloc[500000:100000, 1],))
     processes_2.append(p2)
-    p3 = multiprocessing.Process(target=multiprocessing_func_6, args=(data.iloc[1000000:1500000, 1],))
+    p3 = multiprocessing.Process(target=multiprocessing_func_6, args=(data.iloc[100000:1500000, 1],))
     processes_2.append(p3)
     p4 = multiprocessing.Process(target=multiprocessing_func_8, args=(data.iloc[1500000:, 1],))
     processes_2.append(p4)

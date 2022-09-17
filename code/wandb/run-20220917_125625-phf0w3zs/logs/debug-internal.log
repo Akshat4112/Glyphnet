@@ -1,0 +1,359 @@
+2022-09-17 12:56:25,728 INFO    StreamThr :25978 [internal.py:wandb_internal():90] W&B internal server running at pid: 25978, started at: 2022-09-17 12:56:25.727651
+2022-09-17 12:56:25,729 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: status
+2022-09-17 12:56:25,730 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: status
+2022-09-17 12:56:25,736 DEBUG   SenderThread:25978 [sender.py:send():302] send: header
+2022-09-17 12:56:25,736 INFO    WriterThread:25978 [datastore.py:open_for_write():75] open: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/run-phf0w3zs.wandb
+2022-09-17 12:56:25,736 DEBUG   SenderThread:25978 [sender.py:send():302] send: run
+2022-09-17 12:56:26,214 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: check_version
+2022-09-17 12:56:26,215 INFO    SenderThread:25978 [dir_watcher.py:__init__():216] watching files in: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files
+2022-09-17 12:56:26,215 INFO    SenderThread:25978 [sender.py:_start_run_threads():913] run started: phf0w3zs with start time 1663412185.725037
+2022-09-17 12:56:26,216 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:56:26,216 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:56:26,216 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: check_version
+2022-09-17 12:56:26,376 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: run_start
+2022-09-17 12:56:26,378 DEBUG   HandlerThread:25978 [meta.py:__init__():35] meta init
+2022-09-17 12:56:26,378 DEBUG   HandlerThread:25978 [meta.py:__init__():50] meta init done
+2022-09-17 12:56:26,378 DEBUG   HandlerThread:25978 [meta.py:probe():216] probe
+2022-09-17 12:56:26,381 DEBUG   HandlerThread:25978 [meta.py:_setup_git():206] setup git
+2022-09-17 12:56:26,392 DEBUG   HandlerThread:25978 [meta.py:_setup_git():213] setup git done
+2022-09-17 12:56:26,392 DEBUG   HandlerThread:25978 [meta.py:_save_code():88] save code
+2022-09-17 12:56:26,395 DEBUG   HandlerThread:25978 [meta.py:_save_code():109] save code done
+2022-09-17 12:56:26,395 DEBUG   HandlerThread:25978 [meta.py:_save_patches():126] save patches
+2022-09-17 12:56:26,435 DEBUG   HandlerThread:25978 [meta.py:_save_patches():168] save patches done
+2022-09-17 12:56:26,436 DEBUG   HandlerThread:25978 [meta.py:_save_pip():54] save pip
+2022-09-17 12:56:26,436 DEBUG   HandlerThread:25978 [meta.py:_save_pip():68] save pip done
+2022-09-17 12:56:26,436 DEBUG   HandlerThread:25978 [meta.py:probe():254] probe done
+2022-09-17 12:56:26,498 DEBUG   SenderThread:25978 [sender.py:send():302] send: files
+2022-09-17 12:56:26,499 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-metadata.json with policy now
+2022-09-17 12:56:26,499 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file code/code/train.py with policy now
+2022-09-17 12:56:26,500 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file diff.patch with policy now
+2022-09-17 12:56:26,524 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: stop_status
+2022-09-17 12:56:26,525 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: stop_status
+2022-09-17 12:56:27,110 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: get_summary
+2022-09-17 12:56:27,219 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-summary.json
+2022-09-17 12:56:27,219 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/requirements.txt
+2022-09-17 12:56:27,219 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-metadata.json
+2022-09-17 12:56:27,220 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/diff.patch
+2022-09-17 12:56:27,220 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/code/code/train.py
+2022-09-17 12:56:27,220 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/code
+2022-09-17 12:56:27,220 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/code/code
+2022-09-17 12:56:27,304 DEBUG   SenderThread:25978 [sender.py:send():302] send: telemetry
+2022-09-17 12:56:27,316 DEBUG   SenderThread:25978 [sender.py:send():302] send: telemetry
+2022-09-17 12:56:27,316 DEBUG   SenderThread:25978 [sender.py:send():302] send: telemetry
+2022-09-17 12:56:27,316 DEBUG   SenderThread:25978 [sender.py:send():302] send: files
+2022-09-17 12:56:27,317 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file model-best.h5 with policy live
+2022-09-17 12:56:27,317 DEBUG   SenderThread:25978 [sender.py:send():302] send: telemetry
+2022-09-17 12:56:27,768 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:56:27,768 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:56:27,945 INFO    Thread-16 :25978 [upload_job.py:push():138] Uploaded file /tmp/tmpjo3yu9rhwandb/2ubqr6o7-wandb-metadata.json
+2022-09-17 12:56:27,957 INFO    Thread-17 :25978 [upload_job.py:push():138] Uploaded file /tmp/tmpjo3yu9rhwandb/8jpd9va6-code/code/train.py
+2022-09-17 12:56:27,981 INFO    Thread-18 :25978 [upload_job.py:push():138] Uploaded file /tmp/tmpjo3yu9rhwandb/3863a717-diff.patch
+2022-09-17 12:56:28,216 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-summary.json
+2022-09-17 12:56:28,217 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:56:29,345 DEBUG   SenderThread:25978 [sender.py:send():302] send: files
+2022-09-17 12:56:29,345 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json with policy now
+2022-09-17 12:56:29,346 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:56:29,347 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:56:30,204 INFO    Thread-19 :25978 [upload_job.py:push():138] Uploaded file /tmp/tmpjo3yu9rhwandb/2jezb33c-media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json
+2022-09-17 12:56:30,218 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-summary.json
+2022-09-17 12:56:30,218 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:56:30,218 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json
+2022-09-17 12:56:30,219 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/media
+2022-09-17 12:56:30,220 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/media/graph
+2022-09-17 12:56:31,067 INFO    Thread-20 :25978 [upload_job.py:push():138] Uploaded file /tmp/tmpjo3yu9rhwandb/2gadi9jf-media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json
+2022-09-17 12:56:32,219 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:56:34,220 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:56:36,222 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:56:38,223 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:56:42,317 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: stop_status
+2022-09-17 12:56:42,317 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: stop_status
+2022-09-17 12:56:51,937 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: partial_history
+2022-09-17 12:56:51,938 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: partial_history
+2022-09-17 12:56:51,940 DEBUG   SenderThread:25978 [sender.py:send():302] send: history
+2022-09-17 12:56:51,941 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:56:51,943 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:56:51,944 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:56:51,944 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:56:51,945 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:56:51,945 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:56:52,233 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-summary.json
+2022-09-17 12:56:52,233 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best.h5
+2022-09-17 12:56:54,234 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/saved_model.pb
+2022-09-17 12:56:54,234 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/keras_metadata.pb
+2022-09-17 12:56:54,235 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/variables/variables.data-00000-of-00001
+2022-09-17 12:56:54,235 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/variables/variables.index
+2022-09-17 12:56:54,235 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/variables
+2022-09-17 12:56:54,235 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/assets
+2022-09-17 12:56:54,235 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best
+2022-09-17 12:56:54,456 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: log_artifact
+2022-09-17 12:56:54,456 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: log_artifact
+2022-09-17 12:56:56,236 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:56:57,209 INFO    Thread-21 :25978 [upload_job.py:push():138] Uploaded file /tmp/tmpjo3yu9rhwandb/34quiasb-model-best.h5
+2022-09-17 12:56:57,639 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: stop_status
+2022-09-17 12:56:58,498 INFO    Thread-26 :25978 [upload_job.py:push():96] Uploaded file /home/akshat/.cache/wandb/artifacts/obj/md5/85/29ff418224289709bab3747d4503d2
+2022-09-17 12:56:58,612 INFO    Thread-23 :25978 [upload_job.py:push():96] Uploaded file /home/akshat/.cache/wandb/artifacts/obj/md5/95/078743c7c6cf1762ddc8e50104f386
+2022-09-17 12:56:58,787 INFO    Thread-24 :25978 [upload_job.py:push():96] Uploaded file /home/akshat/.cache/wandb/artifacts/obj/md5/e5/ee7862bd39d4283f5294fb385105c8
+2022-09-17 12:57:01,607 INFO    Thread-25 :25978 [upload_job.py:push():96] Uploaded file /home/akshat/.cache/wandb/artifacts/obj/md5/6a/9095e6aae4bfc74d22f2ec5de83bc5
+2022-09-17 12:57:03,094 INFO    SenderThread:25978 [sender.py:send_request_log_artifact():1207] logged artifact model-iconic-lion-58 - {'id': 'QXJ0aWZhY3Q6MTk0NTU4Nzgz', 'digest': 'af0e94e79b7a9ac626d8306238122a76', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjI4NDAzODgw', 'latestArtifact': None}, 'version': 'latest'}
+2022-09-17 12:57:03,460 DEBUG   SenderThread:25978 [sender.py:send():302] send: stats
+2022-09-17 12:57:03,462 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: stop_status
+2022-09-17 12:57:04,242 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/config.yaml
+2022-09-17 12:57:06,244 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:57:17,640 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: stop_status
+2022-09-17 12:57:17,640 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: stop_status
+2022-09-17 12:57:18,464 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: partial_history
+2022-09-17 12:57:18,465 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: partial_history
+2022-09-17 12:57:18,466 DEBUG   SenderThread:25978 [sender.py:send():302] send: history
+2022-09-17 12:57:18,466 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:57:18,468 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:57:18,469 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:57:18,469 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:57:18,469 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:57:18,470 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:57:19,252 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-summary.json
+2022-09-17 12:57:19,252 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best.h5
+2022-09-17 12:57:20,253 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/saved_model.pb
+2022-09-17 12:57:20,253 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/keras_metadata.pb
+2022-09-17 12:57:20,253 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/variables/variables.data-00000-of-00001
+2022-09-17 12:57:20,253 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/variables/variables.index
+2022-09-17 12:57:20,253 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/variables
+2022-09-17 12:57:20,253 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best/assets
+2022-09-17 12:57:20,253 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_created():275] file/dir created: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best
+2022-09-17 12:57:20,378 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: log_artifact
+2022-09-17 12:57:20,378 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: log_artifact
+2022-09-17 12:57:21,591 INFO    Thread-28 :25978 [upload_job.py:push():93] Skipped uploading /home/akshat/.cache/wandb/artifacts/obj/md5/95/078743c7c6cf1762ddc8e50104f386
+2022-09-17 12:57:22,173 INFO    Thread-31 :25978 [upload_job.py:push():96] Uploaded file /home/akshat/.cache/wandb/artifacts/obj/md5/a7/eba6da4d04037eba77f70d100f8b6e
+2022-09-17 12:57:22,254 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:57:22,360 INFO    Thread-29 :25978 [upload_job.py:push():96] Uploaded file /home/akshat/.cache/wandb/artifacts/obj/md5/1b/0dfdb223d87463c18765e7a1726e73
+2022-09-17 12:57:25,979 INFO    Thread-30 :25978 [upload_job.py:push():96] Uploaded file /home/akshat/.cache/wandb/artifacts/obj/md5/e9/e3f9777511056687bdee2343e77960
+2022-09-17 12:57:27,153 INFO    SenderThread:25978 [sender.py:send_request_log_artifact():1207] logged artifact model-iconic-lion-58 - {'id': 'QXJ0aWZhY3Q6MTk0NTU5MTQ0', 'digest': 'dc71796f35f6770846ddfe9ec04af236', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjI4NDAzODgw', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTk0NTU4Nzgz', 'versionIndex': 0}}, 'version': 'latest'}
+2022-09-17 12:57:27,153 DEBUG   SenderThread:25978 [sender.py:send():302] send: stats
+2022-09-17 12:57:30,258 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:57:32,966 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: stop_status
+2022-09-17 12:57:32,966 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: stop_status
+2022-09-17 12:57:38,262 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:57:40,264 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:57:42,265 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:57:48,187 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: stop_status
+2022-09-17 12:57:48,188 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: stop_status
+2022-09-17 12:57:53,907 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: partial_history
+2022-09-17 12:57:53,908 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: partial_history
+2022-09-17 12:57:53,909 DEBUG   SenderThread:25978 [sender.py:send():302] send: history
+2022-09-17 12:57:53,909 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:57:53,910 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:57:54,273 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-summary.json
+2022-09-17 12:57:54,655 DEBUG   SenderThread:25978 [sender.py:send():302] send: stats
+2022-09-17 12:57:56,275 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:57:58,276 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:58:00,278 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:58:02,280 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:58:03,552 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: stop_status
+2022-09-17 12:58:03,553 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: stop_status
+2022-09-17 12:58:04,281 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:58:06,187 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: partial_history
+2022-09-17 12:58:06,188 DEBUG   SenderThread:25978 [sender.py:send():302] send: history
+2022-09-17 12:58:06,189 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:58:06,190 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:58:06,191 DEBUG   SenderThread:25978 [sender.py:send():302] send: exit
+2022-09-17 12:58:06,191 INFO    SenderThread:25978 [sender.py:send_exit():438] handling exit code: 0
+2022-09-17 12:58:06,191 INFO    SenderThread:25978 [sender.py:send_exit():440] handling runtime: 99
+2022-09-17 12:58:06,191 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:06,192 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:58:06,192 INFO    SenderThread:25978 [sender.py:send_exit():446] send defer
+2022-09-17 12:58:06,192 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:06,194 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:06,194 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 0
+2022-09-17 12:58:06,194 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:06,194 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 0
+2022-09-17 12:58:06,194 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 1
+2022-09-17 12:58:06,195 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:06,195 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 1
+2022-09-17 12:58:06,224 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:06,225 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 1
+2022-09-17 12:58:06,225 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 2
+2022-09-17 12:58:06,225 DEBUG   SenderThread:25978 [sender.py:send():302] send: stats
+2022-09-17 12:58:06,225 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:06,225 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 2
+2022-09-17 12:58:06,225 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:06,226 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 2
+2022-09-17 12:58:06,226 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 3
+2022-09-17 12:58:06,226 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:06,226 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 3
+2022-09-17 12:58:06,226 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:06,226 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 3
+2022-09-17 12:58:06,226 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 4
+2022-09-17 12:58:06,226 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:06,226 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 4
+2022-09-17 12:58:06,227 DEBUG   SenderThread:25978 [sender.py:send():302] send: summary
+2022-09-17 12:58:06,227 INFO    SenderThread:25978 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-09-17 12:58:06,228 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:06,228 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 4
+2022-09-17 12:58:06,228 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 5
+2022-09-17 12:58:06,228 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:06,228 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 5
+2022-09-17 12:58:06,229 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:06,229 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 5
+2022-09-17 12:58:06,229 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 6
+2022-09-17 12:58:06,229 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:06,229 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 6
+2022-09-17 12:58:06,229 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:06,229 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 6
+2022-09-17 12:58:06,283 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-summary.json
+2022-09-17 12:58:06,283 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:58:06,293 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:08,284 INFO    Thread-12 :25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:58:09,438 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 7
+2022-09-17 12:58:09,438 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:09,439 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:09,439 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 7
+2022-09-17 12:58:09,439 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:09,439 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 7
+2022-09-17 12:58:09,440 INFO    SenderThread:25978 [dir_watcher.py:finish():362] shutting down directory watcher
+2022-09-17 12:58:09,540 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:10,284 INFO    SenderThread:25978 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:58:10,285 INFO    SenderThread:25978 [dir_watcher.py:finish():392] scan: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files
+2022-09-17 12:58:10,285 INFO    SenderThread:25978 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log output.log
+2022-09-17 12:58:10,285 INFO    SenderThread:25978 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-metadata.json wandb-metadata.json
+2022-09-17 12:58:10,285 INFO    SenderThread:25978 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-summary.json wandb-summary.json
+2022-09-17 12:58:10,285 INFO    SenderThread:25978 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/requirements.txt requirements.txt
+2022-09-17 12:58:10,290 INFO    SenderThread:25978 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/model-best.h5 model-best.h5
+2022-09-17 12:58:10,291 INFO    SenderThread:25978 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/diff.patch diff.patch
+2022-09-17 12:58:10,291 INFO    SenderThread:25978 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/config.yaml config.yaml
+2022-09-17 12:58:10,294 INFO    SenderThread:25978 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/code/code/train.py code/code/train.py
+2022-09-17 12:58:10,294 INFO    SenderThread:25978 [dir_watcher.py:finish():406] scan save: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json media/graph/graph_summary_b0e9b1f69b92fffcd908.graph.json
+2022-09-17 12:58:10,294 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 8
+2022-09-17 12:58:10,295 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:10,295 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:10,295 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 8
+2022-09-17 12:58:10,296 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:10,296 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 8
+2022-09-17 12:58:10,296 INFO    SenderThread:25978 [file_pusher.py:finish():171] shutting down file pusher
+2022-09-17 12:58:10,396 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:10,396 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:10,497 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:10,497 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:10,598 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:10,599 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:10,700 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:10,700 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:10,801 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:10,801 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:10,902 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:10,903 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,004 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,004 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,105 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,106 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,207 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,207 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,308 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,308 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,409 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,410 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,511 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,511 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,613 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,613 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,714 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,714 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,815 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,815 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,850 INFO    Thread-34 :25978 [upload_job.py:push():138] Uploaded file /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/requirements.txt
+2022-09-17 12:58:11,917 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:11,917 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:11,952 INFO    Thread-36 :25978 [upload_job.py:push():138] Uploaded file /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/config.yaml
+2022-09-17 12:58:11,976 INFO    Thread-32 :25978 [upload_job.py:push():138] Uploaded file /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/output.log
+2022-09-17 12:58:12,018 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,018 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:12,036 INFO    Thread-33 :25978 [upload_job.py:push():138] Uploaded file /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/files/wandb-summary.json
+2022-09-17 12:58:12,119 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,119 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:12,220 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,220 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:12,321 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,322 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:12,423 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,423 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:12,524 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,524 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:12,625 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,625 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:12,726 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,726 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:12,828 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,828 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:12,929 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:12,929 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,030 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,030 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,131 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,132 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,233 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,233 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,334 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,334 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,435 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,436 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,537 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,537 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,638 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,638 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,739 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,740 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,841 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,841 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:13,942 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:13,942 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,043 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:14,043 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,145 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:14,145 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,246 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:14,247 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,348 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:14,348 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,449 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:14,449 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,551 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:14,551 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,652 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:14,652 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,745 INFO    Thread-35 :25978 [upload_job.py:push():138] Uploaded file /tmp/tmpjo3yu9rhwandb/251d3t2r-model-best.h5
+2022-09-17 12:58:14,753 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:14,753 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,854 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:14,854 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:14,950 INFO    Thread-11 (_thread_body):25978 [sender.py:transition_state():459] send defer: 9
+2022-09-17 12:58:14,950 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:14,950 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 9
+2022-09-17 12:58:14,950 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:14,950 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 9
+2022-09-17 12:58:14,955 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:15,102 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 10
+2022-09-17 12:58:15,103 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:15,103 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:15,103 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 10
+2022-09-17 12:58:15,104 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:15,104 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 10
+2022-09-17 12:58:15,104 INFO    SenderThread:25978 [sender.py:transition_state():459] send defer: 11
+2022-09-17 12:58:15,104 DEBUG   SenderThread:25978 [sender.py:send():302] send: final
+2022-09-17 12:58:15,104 DEBUG   SenderThread:25978 [sender.py:send():302] send: footer
+2022-09-17 12:58:15,105 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: defer
+2022-09-17 12:58:15,105 INFO    HandlerThread:25978 [handler.py:handle_request_defer():164] handle defer: 11
+2022-09-17 12:58:15,105 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: defer
+2022-09-17 12:58:15,105 INFO    SenderThread:25978 [sender.py:send_request_defer():455] handle sender defer: 11
+2022-09-17 12:58:15,204 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: poll_exit
+2022-09-17 12:58:15,205 DEBUG   SenderThread:25978 [sender.py:send_request():316] send_request: poll_exit
+2022-09-17 12:58:15,205 INFO    SenderThread:25978 [file_pusher.py:join():176] waiting for file pusher
+2022-09-17 12:58:15,539 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: sampled_history
+2022-09-17 12:58:15,540 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: get_summary
+2022-09-17 12:58:15,541 INFO    MainThread:25978 [wandb_run.py:_footer_history_summary_info():3305] rendering history
+2022-09-17 12:58:15,541 INFO    MainThread:25978 [wandb_run.py:_footer_history_summary_info():3337] rendering summary
+2022-09-17 12:58:15,542 INFO    MainThread:25978 [wandb_run.py:_footer_sync_info():3261] logging synced files
+2022-09-17 12:58:15,542 DEBUG   HandlerThread:25978 [handler.py:handle_request():141] handle_request: shutdown
+2022-09-17 12:58:15,542 INFO    HandlerThread:25978 [handler.py:finish():810] shutting down handler
+2022-09-17 12:58:16,105 INFO    WriterThread:25978 [datastore.py:close():279] close: /home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/wandb/run-20220917_125625-phf0w3zs/run-phf0w3zs.wandb
+2022-09-17 12:58:16,438 INFO    SenderThread:25978 [sender.py:finish():1312] shutting down sender
+2022-09-17 12:58:16,439 INFO    SenderThread:25978 [file_pusher.py:finish():171] shutting down file pusher
+2022-09-17 12:58:16,439 INFO    SenderThread:25978 [file_pusher.py:join():176] waiting for file pusher
+2022-09-17 12:58:16,544 INFO    MainThread:25978 [internal.py:handle_exit():80] Internal process exited
