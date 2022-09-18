@@ -1,170 +1,248 @@
+import random
+import numpy as np
+from matplotlib import pyplot
+from tensorflow.keras.utils import to_categorical
 from tensorflow.keras import optimizers
-from datetime import datetime
-
-import matplotlib.pyplot as plt
-import tensorflow as tf
-from tensorflow.keras import Input
-from tensorflow.keras import Model
 from tensorflow.keras import layers
 from tensorflow.keras import models
-from tensorflow.keras import optimizers
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.client import device_lib
-from wandb.keras import WandbCallback
-
+import tensorflow.keras.backend as K
+from tensorflow.keras import Input
+from tensorflow.keras import Model
+import tensorflow as tf
 import wandb
-from attentionModule import attach_attention_module ## Custom defined attention module.
+from wandb.keras import WandbCallback
+import argparse
+import os
+from datetime import datetime
+from attentionModule import attach_attention_module
+import matplotlib.pyplot as plt
 
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import cohen_kappa_score
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import confusion_matrix
+
+
+#Set the random seeds
+os.environ['TF_CUDNN_DETERMINISTIC'] = '1'
+random.seed(hash("setting random seeds") % 2**32 -1)
+np.random.seed(hash("improves reproducibility")% 2**32 -1)
+tf.random.set_seed(hash("by removing stochasticity")% 2**32 -1)
+
+
+# print(device_lib.list_local_devices())
 
 class NeuralNetwork:
-    def __init__(self) -> None:
-        wandb.init(project="HomoglyphDetection", entity="robofied")
-        print(device_lib.list_local_devices())
-        pass
+  def __init__(self) -> None:
+    pass
 
-    def DataGenerator(self, train_dir, valid_dir):
-        self.train_dir = train_dir
-        self.valid_dir = valid_dir
+  def DataGenerator(self, train_dir, valid_dir):
+    self.train_dir = train_dir
+    self.valid_dir = valid_dir
 
-        # create data generator
-        datagen = ImageDataGenerator(rescale=1. / 255)
+    # create data generator
+    self.datagen = ImageDataGenerator(rescale=1./255)
 
-        # prepare iterator
-        print("Before datagen..")
-        self.train_it = datagen.flow_from_directory(train_dir, class_mode='binary', batch_size=1,
-                                                    target_size=(256, 256))
-        print("Datagen completed..")
-        self.validation_it = datagen.flow_from_directory(valid_dir, class_mode='binary', batch_size=1,
-                                                         target_size=(256, 256))
+    # prepare iterator
+    print("Before datagen..")
+    self.train_it = self.datagen.flow_from_directory(train_dir,class_mode='binary', batch_size=1, target_size=(256, 256))
+    print("Datagen completed..")
+    self.validation_it = self.datagen.flow_from_directory(valid_dir,class_mode='binary', batch_size=1, target_size=(256, 256))
+    
+  def SimpleCNN(self, config):
+    self.config = config
+    self.model = models.Sequential()
+    self.model.add(layers.Conv2D(32, (5, 5), activation='relu', input_shape=(256, 256, 3)))
+    self.model.add(layers.MaxPool2D(2, 2))
+    self.model.add(layers.BatchNormalization())
+    self.model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    self.model.add(layers.MaxPool2D(2, 2))
+    self.model.add(layers.BatchNormalization())
+    self.model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    self.model.add(layers.MaxPool2D(2, 2))
+    self.model.add(layers.Conv2D(128, (3, 3), activation='relu'))
+    self.model.add(layers.MaxPool2D(2, 2))
+    self.model.add(layers.Flatten())
+    self.model.add(layers.Dense(128, activation='relu'))
+    self.model.add(layers.Dense(1, activation='sigmoid'))
+    self.model.summary()
+    self.model.compile(loss='binary_crossentropy',
+                  optimizer=optimizers.RMSprop(lr=self.config['learning_rate']),
+                  metrics=['acc'])
+    
+    callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3)
+    
+    WandbCallback(monitor="val_loss", save_mode=(True), log_weights=(True))
 
-    def SimpleCNN(self):
-        wandb.config = {"learning_rate": 1e-4,
-                        "epochs": 30,
-                        "batch_size": 64}
+    self.history = self.model.fit(self.train_it,
+                                  validation_data=self.validation_it, 
+                                  steps_per_epoch=self.config['steps_per_epoch'], 
+                                  epochs=self.config['epochs'], 
+                                  batch_size=self.config['batch_size'], 
+                                  verbose=1, 
+                                  callbacks=[WandbCallback()])
+    
+    # save model
+    self.name = '../models/modelSimpleCNN' + str(datetime.now()) + '.h5'
+    self.model.save(self.name)
 
-        model = models.Sequential()
-        model.add(layers.Conv2D(32, (5, 5), activation='relu', input_shape=(256, 256, 3)))
-        model.add(layers.MaxPool2D(2, 2))
-        model.add(layers.BatchNormalization())
-        model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-        model.add(layers.MaxPool2D(2, 2))
-        model.add(layers.BatchNormalization())
-        model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-        model.add(layers.MaxPool2D(2, 2))
-        model.add(layers.Conv2D(128, (3, 3), activation='relu'))
-        model.add(layers.MaxPool2D(2, 2))
-        model.add(layers.Flatten())
-        model.add(layers.Dense(128, activation='relu'))
-        model.add(layers.Dense(1, activation='sigmoid'))
+  def AttentionCNN(self, config):
+    self.config = config
 
-        model.compile(loss='binary_crossentropy',
-                      optimizer=optimizers.RMSprop(lr=1e-4),
-                      metrics=['acc'])
-        callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3)
-        self.history = model.fit(self.train_it, validation_data=self.validation_it, steps_per_epoch=50, epochs=50,
-                                 batch_size=64, verbose=1, callbacks=[WandbCallback(), callback])
+    inputs = Input(shape=(256, 256, 3))
 
-        # save model
-        self.name = '../models/modelSimpleCNN' + str(datetime.now()) + '.h5'
-        model.save(self.name)
+    x = layers.Rescaling(1.0 / 255)(inputs)
+    x = layers.Conv2D(32, (5, 5), activation='relu')(x)
+    x = layers.MaxPool2D(2, 2)(x)
+    x = attach_attention_module(x, attention_module='cbam_block')
 
-    def AttentionCNN(self):
-        inputs = Input(shape=(256, 256, 3))
+    x = layers.BatchNormalization()(x)
+    x = layers.Conv2D(64, (3, 3), activation='relu')(x)
+    x = layers.MaxPool2D(2, 2)(x)
+    x = attach_attention_module(x, attention_module='cbam_block')
 
-        x = layers.Rescaling(1.0 / 255)(inputs)
-        x = layers.Conv2D(32, (5, 5), activation='relu')(x)
-        x = layers.MaxPool2D(2, 2)(x)
-        x = attach_attention_module(x, attention_module='cbam_block')
+    x = layers.BatchNormalization()(x)
+    x = layers.Conv2D(64, (3, 3), activation='relu')(x)
+    x = layers.MaxPool2D(2, 2)(x)
+    x = attach_attention_module(x, attention_module='cbam_block')
 
-        x = layers.BatchNormalization()(x)
-        x = layers.Conv2D(64, (3, 3), activation='relu')(x)
-        x = layers.MaxPool2D(2, 2)(x)
-        x = attach_attention_module(x, attention_module='cbam_block')
+    x = layers.Conv2D(128, (3, 3), activation='relu')(x)
+    x = layers.MaxPool2D(2, 2)(x)
+    x = attach_attention_module(x, attention_module='cbam_block')
+    
+    x = layers.Flatten()(x)
+    x = layers.Dense(128, activation='relu')(x)
 
-        x = layers.BatchNormalization()(x)
-        x = layers.Conv2D(64, (3, 3), activation='relu')(x)
-        x = layers.MaxPool2D(2, 2)(x)
-        x = attach_attention_module(x, attention_module='cbam_block')
+    outputs = layers.Dense(1, activation='sigmoid')(x)
+    self.model = Model(inputs, outputs)
+    
+    self.model.summary()
+    self.model.compile(loss='binary_crossentropy',
+                  optimizer=optimizers.RMSprop(lr=self.config['learning_rate']),
+                  metrics=['acc'])
 
-        x = layers.Conv2D(128, (3, 3), activation='relu')(x)
-        x = layers.MaxPool2D(2, 2)(x)
-        x = attach_attention_module(x, attention_module='cbam_block')
+    callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3)
+    WandbCallback(monitor="val_loss", save_mode=(True), log_weights=(True))
 
-        x = layers.Flatten()(x)
-        x = layers.Dense(128, activation='relu')(x)
+    self.history = self.model.fit(self.train_it,
+                                  validation_data=self.validation_it, 
+                                  steps_per_epoch=self.config['steps_per_epoch'], 
+                                  epochs=self.config['epochs'], 
+                                  batch_size=self.config['batch_size'], 
+                                  verbose=1, 
+                                  callbacks=[WandbCallback()])
 
-        outputs = layers.Dense(1, activation='sigmoid')(x)
-        model = Model(inputs, outputs)
-
-        model.compile(loss='binary_crossentropy',
-                      optimizer=optimizers.RMSprop(lr=1e-4),
-                      metrics=['acc'])
-        callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3)
-
-        self.history = model.fit(self.train_it, validation_data=self.validation_it, steps_per_epoch=500, epochs=50,
-                                 batch_size=64, verbose=1, callbacks=[WandbCallback(), callback])
-
-        # save model
-        self.name = '../models/modelAttentionCNN' + str(datetime.now()) + '.h5'
-        model.save(self.name)
-
-        return None
-
-    def plotGraphs(self):
-        history = self.history
-        plt.plot(history.history['acc'])
-        plt.plot(history.history['val_acc'])
-        plt.title('model accuracy')
-        plt.ylabel('accuracy')
-        plt.xlabel('epoch')
-        plt.legend(['train', 'val'], loc='upper left')
-        acc_fig_name = '../figures/' + '_acc_' + self.name[10:-1] + '.png'
-        plt.savefig(acc_fig_name)
-        plt.clf()
-
-        plt.plot(history.history['loss'])
-        plt.plot(history.history['val_loss'])
-        plt.title('model loss')
-        plt.ylabel('loss')
-        plt.xlabel('epoch')
-        plt.legend(['train', 'val'], loc='upper left')
-        loss_fig_name = acc_fig_name = '../figures/' + '_loss_' + self.name[10:-1] + '.png'
-        plt.savefig(loss_fig_name)
-
-    # def Evaluation():
-    #       # fit model
-
-    #   print("Evalutaing model..")
-
-    #   # prepare iterator
-    #   print("Before datagen..")
-    #   test_dir = os.path.join(path_arg, "final_test")
-    #   test_it = datagen.flow_from_directory(test_dir, class_mode='binary', batch_size=1, target_size=(256, 256))
-    #   print("Datagen completed..")
-
-    #   # evaluate model
-    #   print("Evaluating Model..")
-
-    #   _, acc, f1_score, precision, recall = model.evaluate_generator(test_it, steps=500, verbose=0)
-    #   print('> %.3f' % (acc * 100.0))
-
-    #   print("Computing Precision and Recall for Classification.")
-
-    #   return None
+    # save model
+    self.name = '../models/modelAttentionCNN' + str(datetime.now()) + '.h5'
+    self.model.save(self.name)
 
 
-nn = NeuralNetwork()
-nn.DataGenerator('../data/train', '../data/valid')
+  def plotGraphs(self):
+    history = self.history
+    plt.plot(history.history['acc'])
+    plt.plot(history.history['val_acc'])
+    plt.title('model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'val'], loc='upper left')
+    acc_fig_name = '../figures/' + '_acc_' + self.name[10:-1] + '.png'
+    plt.savefig(acc_fig_name)
+    plt.clf()
 
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'val'], loc='upper left')
+    loss_fig_name = acc_fig_name = '../figures/' + '_loss_' + self.name[10:-1] + '.png'
+    plt.savefig(loss_fig_name)
+    
+  def Evaluation(self):
+    # create data generator
+    print("Evalutaing model..")
+    self.test_it = self.datagen.flow_from_directory("../data/test/test", class_mode='binary', batch_size=1, target_size=(256, 256))
+    
+    train_loss, train_acc = self.model.evaluate(self.train_it, steps=10, verbose=0)
+    test_loss, test_acc = self.model.evaluate(self.test_it, steps=10, verbose=0)
+    
+    print('Training Loss is: ', train_loss)
+    print('Training Accuracy is: %.3f' % (train_acc * 100.0))
+
+    print('Test Loss is: ', test_loss)
+    print('Test Accuracy is: %.3f' % (test_acc * 100.0))
+
+    true_labels = self.test_it.classes
+    predictions = self.model.predict(self.test_it)
+    y_true = true_labels
+    y_pred = np.array([np.argmax(x) for x in predictions])
+    
+    accuracy = accuracy_score(y_true, y_pred)
+    print('Accuracy: %f' % accuracy)
+    precision = precision_score(y_true, y_pred)
+    print('Precision: %f' % precision)
+    recall = recall_score(y_true, y_pred)
+    print('Recall: %f' % recall)
+    f1 = f1_score(y_true, y_pred)
+    print('F1 score: %f' % f1)
+    kappa = cohen_kappa_score(y_true, y_pred)
+    print('Cohens kappa: %f' % kappa)
+    auc = roc_auc_score(y_true, predictions)
+    print('ROC AUC: %f' % auc)
+    matrix = confusion_matrix(y_true, y_pred)
+    print(matrix)
+
+    wandb.log({'Accuracy': accuracy, 
+              'Precision': precision, 
+              'Recall': recall, 
+              'f1-score': f1, 
+              'kappa': kappa, 
+              'auc': auc, 
+              'confusion_matrix': matrix})
+
+
+run = wandb.init(project="Homoglyph Detection", entity="team_uni_stuttgart")
+
+
+obj = NeuralNetwork()
+
+obj.DataGenerator('../data/train', '../data/valid/valid')
 print("Data Generation Completed")
 
-nn.SimpleCNN()
-nn.plotGraphs()
+config = wandb.config = {"learning_rate": 1e-4,
+                          "epochs": 50,
+                          "steps_per_epoch":50,
+                          "batch_size": 128,
+                          "architecture":"Simple CNN",
+                          "dataset":"Glyphnet Dataset",}
 
-print("Simple CNN Completed. ")
-print("Attention CNN Started ")
+obj.SimpleCNN(config)
+obj.plotGraphs()
+obj.Evaluation()
+print("Simple CNN Experiment Completed")
+run.finish()
 
-nn.AttentionCNN()
-nn.plotGraphs()
 
-print("Attention CNN Completed")
+
+run = wandb.init(project="Homoglyph Detection", entity="team_uni_stuttgart", reinit=True)
+
+config = wandb.config = {"learning_rate": 1e-4,
+                          "epochs": 50,
+                          "steps_per_epoch":50,
+                          "batch_size": 128,
+                          "architecture":"Attention CNN",
+                          "dataset":"Glyphnet Dataset",}
+
+
+obj.AttentionCNN(config)
+obj.plotGraphs()
+obj.Evaluation()
+wandb.finish()
+
+print("Attention CNN Experiment Completed")

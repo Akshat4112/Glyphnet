@@ -1,0 +1,101 @@
+Before datagen..
+Found 2800 images belonging to 2 classes.
+Datagen completed..
+Found 800 images belonging to 2 classes.
+Data Generation Completed
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv2d (Conv2D)             (None, 252, 252, 32)      2432
+ max_pooling2d (MaxPooling2D  (None, 126, 126, 32)     0
+ )
+ batch_normalization (BatchN  (None, 126, 126, 32)     128
+ ormalization)
+ conv2d_1 (Conv2D)           (None, 124, 124, 64)      18496
+ max_pooling2d_1 (MaxPooling  (None, 62, 62, 64)       0
+ 2D)
+ batch_normalization_1 (Batc  (None, 62, 62, 64)       256
+ hNormalization)
+ conv2d_2 (Conv2D)           (None, 60, 60, 64)        36928
+ max_pooling2d_2 (MaxPooling  (None, 30, 30, 64)       0
+ 2D)
+ conv2d_3 (Conv2D)           (None, 28, 28, 128)       73856
+ max_pooling2d_3 (MaxPooling  (None, 14, 14, 128)      0
+ 2D)
+ flatten (Flatten)           (None, 25088)             0
+ dense (Dense)               (None, 128)               3211392
+ dense_1 (Dense)             (None, 1)                 129
+=================================================================
+Total params: 3,343,617
+Trainable params: 3,343,425
+Non-trainable params: 192
+_________________________________________________________________
+Epoch 1/10
+ 1/50 [..............................] - ETA: 54s - loss: 0.8062 - acc: 0.0000e+00
+/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/keras/optimizers/optimizer_v2/rmsprop.py:135: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  super(RMSprop, self).__init__(name, **kwargs)
+[34m[1mwandb[39m[22m: [33mWARNING[39m The save_model argument by default saves the model in the HDF5 format that cannot save custom objects like subclassed models and custom layers. This behavior will be deprecated in a future release in favor of the SavedModel format. Meanwhile, the HDF5 model is saved as W&B files and the SavedModel as W&B Artifacts.
+WARNING:tensorflow:From /home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/ops/nn_ops.py:5219: tensor_shape_from_node_def_name (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+
+
+
+50/50 [==============================] - ETA: 0s - loss: 1.1715 - acc: 0.5000
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 4 of 4). These functions will not be directly callable after loading.
+50/50 [==============================] - 22s 428ms/step - loss: 1.1715 - acc: 0.5000 - val_loss: 0.6938 - val_acc: 0.5000
+Epoch 2/10
+50/50 [==============================] - ETA: 0s - loss: 0.7606 - acc: 0.5800
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 4 of 4). These functions will not be directly callable after loading.
+50/50 [==============================] - 21s 431ms/step - loss: 0.7606 - acc: 0.5800 - val_loss: 0.6935 - val_acc: 0.5000
+Epoch 3/10
+50/50 [==============================] - ETA: 0s - loss: 0.7500 - acc: 0.5200
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 4 of 4). These functions will not be directly callable after loading.
+
+50/50 [==============================] - 23s 472ms/step - loss: 0.7500 - acc: 0.5200 - val_loss: 0.6930 - val_acc: 0.5038
+Epoch 4/10
+
+
+
+50/50 [==============================] - 20s 408ms/step - loss: 0.7612 - acc: 0.4400 - val_loss: 0.6942 - val_acc: 0.5000
+Epoch 5/10
+
+
+
+50/50 [==============================] - 21s 421ms/step - loss: 0.7074 - acc: 0.6000 - val_loss: 0.6938 - val_acc: 0.5000
+Epoch 6/10
+
+
+
+
+50/50 [==============================] - 20s 409ms/step - loss: 0.7477 - acc: 0.5600 - val_loss: 0.6942 - val_acc: 0.5000
+Epoch 7/10
+
+
+
+50/50 [==============================] - 20s 408ms/step - loss: 0.7442 - acc: 0.5000 - val_loss: 0.6942 - val_acc: 0.5000
+Epoch 8/10
+
+
+
+50/50 [==============================] - ETA: 0s - loss: 0.7192 - acc: 0.4400
+/home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/train.py:172: UserWarning: `Model.predict_generator` is deprecated and will be removed in a future version. Please use `Model.predict`, which supports generators.
+50/50 [==============================] - 21s 425ms/step - loss: 0.7192 - acc: 0.4400 - val_loss: 0.6931 - val_acc: 0.5025
+Evalutaing model..
+Found 400 images belonging to 2 classes.
+Training Loss is:  0.7013492584228516
+Training Accuracy is: 40.000
+Test Loss is:  0.677937388420105
+Test Accuracy is: 70.000
+Computing Precision and Recall for Classification.
+/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1334: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Accuracy: 0.500000
+Precision: 0.000000
+Recall: 0.000000
+F1 score: 0.000000
+Cohens kappa: 0.000000
+ROC AUC: 0.543050
+[[200   0]
+ [200   0]]
+Simple CNN Completed.

@@ -1,0 +1,100 @@
+Before datagen..
+Found 2800 images belonging to 2 classes.
+Datagen completed..
+Found 800 images belonging to 2 classes.
+Data Generation Completed
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ conv2d (Conv2D)             (None, 252, 252, 32)      2432
+ max_pooling2d (MaxPooling2D  (None, 126, 126, 32)     0
+ )
+ batch_normalization (BatchN  (None, 126, 126, 32)     128
+ ormalization)
+ conv2d_1 (Conv2D)           (None, 124, 124, 64)      18496
+ max_pooling2d_1 (MaxPooling  (None, 62, 62, 64)       0
+ 2D)
+ batch_normalization_1 (Batc  (None, 62, 62, 64)       256
+ hNormalization)
+ conv2d_2 (Conv2D)           (None, 60, 60, 64)        36928
+ max_pooling2d_2 (MaxPooling  (None, 30, 30, 64)       0
+ 2D)
+ conv2d_3 (Conv2D)           (None, 28, 28, 128)       73856
+ max_pooling2d_3 (MaxPooling  (None, 14, 14, 128)      0
+ 2D)
+ flatten (Flatten)           (None, 25088)             0
+ dense (Dense)               (None, 128)               3211392
+ dense_1 (Dense)             (None, 1)                 129
+=================================================================
+Total params: 3,343,617
+Trainable params: 3,343,425
+Non-trainable params: 192
+_________________________________________________________________
+Epoch 1/30
+/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/keras/optimizers/optimizer_v2/rmsprop.py:135: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  super(RMSprop, self).__init__(name, **kwargs)
+[34m[1mwandb[39m[22m: [33mWARNING[39m The save_model argument by default saves the model in the HDF5 format that cannot save custom objects like subclassed models and custom layers. This behavior will be deprecated in a future release in favor of the SavedModel format. Meanwhile, the HDF5 model is saved as W&B files and the SavedModel as W&B Artifacts.
+WARNING:tensorflow:From /home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/ops/nn_ops.py:5219: tensor_shape_from_node_def_name (from tensorflow.python.framework.graph_util_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.graph_util.tensor_shape_from_node_def_name`
+
+
+50/50 [==============================] - ETA: 0s - loss: 1.1184 - acc: 0.5600
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 4 of 4). These functions will not be directly callable after loading.
+50/50 [==============================] - 20s 382ms/step - loss: 1.1184 - acc: 0.5600 - val_loss: 0.7096 - val_acc: 0.5000
+Epoch 2/30
+50/50 [==============================] - ETA: 0s - loss: 0.8849 - acc: 0.5800
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 4 of 4). These functions will not be directly callable after loading.
+50/50 [==============================] - 21s 428ms/step - loss: 0.8849 - acc: 0.5800 - val_loss: 0.6940 - val_acc: 0.5000
+Epoch 3/30
+50/50 [==============================] - 19s 391ms/step - loss: 0.7978 - acc: 0.5000 - val_loss: 0.6972 - val_acc: 0.5000
+Epoch 4/30
+
+
+
+50/50 [==============================] - 19s 378ms/step - loss: 0.7232 - acc: 0.5800 - val_loss: 0.7194 - val_acc: 0.5000
+Epoch 5/30
+
+
+
+50/50 [==============================] - ETA: 0s - loss: 0.8081 - acc: 0.3800
+WARNING:absl:Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 4 of 4). These functions will not be directly callable after loading.
+50/50 [==============================] - 21s 435ms/step - loss: 0.8081 - acc: 0.3800 - val_loss: 0.6932 - val_acc: 0.5050
+Epoch 6/30
+50/50 [==============================] - 19s 392ms/step - loss: 0.6983 - acc: 0.5600 - val_loss: 0.6962 - val_acc: 0.5000
+Epoch 7/30
+
+
+
+50/50 [==============================] - ETA: 0s - loss: 0.7247 - acc: 0.5000
+Traceback (most recent call last):
+  File "/home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/train.py", line 160, in <module>
+    obj.SimpleCNN(conbfig)
+  File "/home/akshat/Documents/Github/Homoglyph_Phishing_Detection/code/train.py", line 70, in SimpleCNN
+    self.history = self.model.fit(self.train_it,validation_data=self.validation_it, steps_per_epoch=50, epochs=self.config['epochs'], batch_size=self.config['batch_size'], verbose=1, callbacks=[WandbCallback(), callback])
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/wandb/integration/keras/keras.py", line 173, in new_v2
+    return old_v2(*args, **kwargs)
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 64, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/keras/engine/training.py", line 1445, in fit
+    val_logs = self.evaluate(
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 64, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/keras/engine/training.py", line 1756, in evaluate
+    tmp_logs = self.test_function(iterator)
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/eager/def_function.py", line 915, in __call__
+    result = self._call(*args, **kwds)
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/eager/def_function.py", line 954, in _call
+    results = self._stateful_fn(*args, **kwds)
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/eager/function.py", line 2453, in __call__
+    return graph_function._call_flat(
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/eager/function.py", line 1860, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/eager/function.py", line 497, in call
+    outputs = execute.execute(
+  File "/home/akshat/Documents/Github/homo_env/lib/python3.10/site-packages/tensorflow/python/eager/execute.py", line 54, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+KeyboardInterrupt
