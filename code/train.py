@@ -78,11 +78,11 @@ class NeuralNetwork:
     
     callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3)
     
-    WandbCallback(monitor="vall_loss", save_mode=(True), log_weights=(True))
+    WandbCallback(monitor="val_loss", save_mode=(True), log_weights=(True))
 
     self.history = self.model.fit(self.train_it,
                                   validation_data=self.validation_it, 
-                                  steps_per_epoch=config['steps_per_epoch'], 
+                                  steps_per_epoch=self.config['steps_per_epoch'], 
                                   epochs=self.config['epochs'], 
                                   batch_size=self.config['batch_size'], 
                                   verbose=1, 
@@ -128,11 +128,11 @@ class NeuralNetwork:
                   metrics=['acc'])
 
     callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3)
-    WandbCallback(monitor="vall_loss", save_mode=(True), log_weights=(True))
+    WandbCallback(monitor="val_loss", save_mode=(True), log_weights=(True))
 
     self.history = self.model.fit(self.train_it,
                                   validation_data=self.validation_it, 
-                                  steps_per_epoch=config['steps_per_epoch'], 
+                                  steps_per_epoch=self.config['steps_per_epoch'], 
                                   epochs=self.config['epochs'], 
                                   batch_size=self.config['batch_size'], 
                                   verbose=1, 
@@ -167,7 +167,7 @@ class NeuralNetwork:
   def Evaluation(self):
     # create data generator
     print("Evalutaing model..")
-    self.test_it = self.datagen.flow_from_directory("../data/test", class_mode='binary', batch_size=1, target_size=(256, 256))
+    self.test_it = self.datagen.flow_from_directory("../data/test/test", class_mode='binary', batch_size=1, target_size=(256, 256))
     
     train_loss, train_acc = self.model.evaluate(self.train_it, steps=10, verbose=0)
     test_loss, test_acc = self.model.evaluate(self.test_it, steps=10, verbose=0)
@@ -207,12 +207,12 @@ class NeuralNetwork:
               'confusion_matrix': matrix})
 
 
-run = wandb.init(project="HomoglyphDetection", entity="robofied")
+run = wandb.init(project="Homoglyph Detection", entity="team_uni_stuttgart")
 
 
 obj = NeuralNetwork()
 
-obj.DataGenerator('../data/train', '../data/valid')
+obj.DataGenerator('../data/train', '../data/valid/valid')
 print("Data Generation Completed")
 
 config = wandb.config = {"learning_rate": 1e-4,
@@ -230,7 +230,7 @@ run.finish()
 
 
 
-run = wandb.init(project="HomoglyphDetection", entity="robofied", reinit=True)
+run = wandb.init(project="Homoglyph Detection", entity="team_uni_stuttgart", reinit=True)
 
 config = wandb.config = {"learning_rate": 1e-4,
                           "epochs": 50,
