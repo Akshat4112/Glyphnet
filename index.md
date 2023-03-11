@@ -7,9 +7,9 @@ Cyber attacks deceive machines into believing something that does not exist in t
 In many cases, that results in either information theft or malware attack on their systems. Existing approaches use simple, string-based comparison techniques applied in primary language-based tasks. Although they are impactful to some extent, they usually fail because they are not robust to different types of homoglyphs and are computationally not feasible because of their time requirement proportional to the string's length.
 Similarly, neural network-based approaches are employed to determine real domain strings from fake ones. Nevertheless, the problem with both methods is that they require paired sequences of real and fake domain strings to work with, which is often not the case in the real world, as the attacker only sends the illegitimate or homoglyph domain to the vulnerable user. Therefore, existing approaches are not suitable for practical scenarios in the real world. In our work, we created GlyphNet, an image dataset that contains 4M domains, both real and homoglyphs. Additionally, we introduce a baseline method for homoglyph attack detection system using an attention-based convolutional Neural Network. We show that our model can reach state-of-the-art accuracy in detecting homoglyph attacks with a 0.93 AUC on our dataset. 
 
-**Introduction**
+**Introduction**<br>
 
-**Dataset**
+**Dataset** <br>
 ***Proposed Dataset***
 
 We have proposed a dataset consisting of real and homoglyph domains. In order to generate homoglyph domains,real domains are needed. We have obtained domains from the Domains Project(Turkynewych 2020). This repository is one of the largest collections of publicly available active domains. The entire repository comprises 500M domains, and we restricted our work to 2M domains due to hardware restrictions.
@@ -21,11 +21,11 @@ Homoglyph Generation is an important task, as one needs to ensure enough randomn
 ***Image Generation***
 Homoglyph attacks exploit the weakness of human vision to differentiate real from homoglyph domain names. From a visual perspective, we are interested in learning the visual characteristics of real and homoglyph domain names. To do so, we rendered images from the real and homoglyph strings generated via our algorithm. We have used ARIAL Typeface as our chosen font, 28 font size, on a black background with white text from the middle left of the image; the image size is 150 × 150.
 
-**Methodology**
-**Experimentation**
-**Results**
-**References**
-**Citation**
+**Methodology**<br>
+**Experimentation**<br>
+**Results**<br>
+**References**<br>
+**Citation**<br>
 
 
 
