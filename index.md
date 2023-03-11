@@ -8,6 +8,10 @@ In many cases, that results in either information theft or malware attack on the
 Similarly, neural network-based approaches are employed to determine real domain strings from fake ones. Nevertheless, the problem with both methods is that they require paired sequences of real and fake domain strings to work with, which is often not the case in the real world, as the attacker only sends the illegitimate or homoglyph domain to the vulnerable user. Therefore, existing approaches are not suitable for practical scenarios in the real world. In our work, we created GlyphNet, an image dataset that contains 4M domains, both real and homoglyphs. Additionally, we introduce a baseline method for homoglyph attack detection system using an attention-based convolutional Neural Network. We show that our model can reach state-of-the-art accuracy in detecting homoglyph attacks with a 0.93 AUC on our dataset. 
 
 **Introduction**<br>
+In cyber security, attackers employ different attacks to infiltrate our systems and networks, with the objective varying from stealing crucial information to inflicting system damage. One such deceptive attack is the homoglyph attack (Woodbridge et al. 2018), which involves an attacker trying to fool humans and computer systems by using characters and symbols that may appear visually similar to characters used in real domain and process names but  are different. For example, a typical homoglyph attack may involve changing “d” to “cl”, “o” to “θ”, and “l” to “1”. <br>
+
+![Real and Homoglyph domains](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/real_fake_domains.png) <br>
+
 ![Real Rober Frost](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/realfrost.png) <br>
 ![Fake Robert Frost](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/fakefrost.png) <br>
 **Dataset** <br>
