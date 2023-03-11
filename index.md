@@ -11,7 +11,7 @@ Similarly, neural network-based approaches are employed to determine real domain
 
 **Dataset** <br>
 
-![Real and Homoglyph Dataset]([http://url/to/img.png](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/real-homoglyph.png))
+![Real and Homoglyph Dataset](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/real-homoglyph.png)
 ***Proposed Dataset***
 
 We have proposed a dataset consisting of real and homoglyph domains. In order to generate homoglyph domains,real domains are needed. We have obtained domains from the Domains Project(Turkynewych 2020). This repository is one of the largest collections of publicly available active domains. The entire repository comprises 500M domains, and we restricted our work to 2M domains due to hardware restrictions.
