@@ -29,6 +29,14 @@ Homoglyph Generation is an important task, as one needs to ensure enough randomn
 Homoglyph attacks exploit the weakness of human vision to differentiate real from homoglyph domain names. From a visual perspective, we are interested in learning the visual characteristics of real and homoglyph domain names. To do so, we rendered images from the real and homoglyph strings generated via our algorithm. We have used ARIAL Typeface as our chosen font, 28 font size, on a black background with white text from the middle left of the image; the image size is 150 × 150.
 
 **Methodology**<br>
+
+![Model Architecture](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/architecture.png) <br>
+
+
+![Attention Layer](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/attention_layer.png) <br>
+
+
+
 **Experimentation**<br>
 **Results**<br>
 **References**<br>
