@@ -1,6 +1,6 @@
 # GlyphNet: Homoglyph domains dataset and detection using attention-based Convolutional Neural Networks
-Akshat Gupta, Laxman Singh Tomar, Ridhima Garg
-![Website](https://akshat4112.github.io/Glyphnet/) <br>
+Akshat Gupta, Laxman Singh Tomar, Ridhima Garg <br>
+[Website](https://akshat4112.github.io/Glyphnet/) <br>
 
 **Abstract**
 Cyber attacks deceive machines into believing something that does not exist in the first place. However, there are some to which even humans fall prey. One such famous attack that attackers have used over the years to exploit the vulnerability of vision is known to be a Homoglyph attack. It employs a primary yet effective mechanism to create illegitimate domains that are hard to differentiate from legit ones. Moreover, as the difference is pretty indistinguishable for a user to notice, they cannot stop themselves from clicking on these homoglyph domain names.
