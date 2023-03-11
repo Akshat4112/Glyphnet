@@ -31,14 +31,21 @@ Homoglyph attacks exploit the weakness of human vision to differentiate real fro
 **Methodology**<br>
 
 ![Model Architecture](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/architecture.png) <br>
-
-
 ![Attention Layer](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/attention_layer.png) <br>
 
-
-
 **Experimentation**<br>
+
+***Dataset and Metrics***<br>
+We have split our dataset into three parts, train, validation, and test, with a ratio of 70 : 20 : 10, respectively which amounts to 2.8M, 0.8M, and 0.4M images in train, validation, and test sets. Each image size is 150 × 150. We use accuracy for measuring the performance of the classification task. Since accuracy can sometimes be misleading in a binary classification task, especially for unbalanced data sets, we consider precision, recall, and F1 score as our evaluation metrics, even though our dataset is balanced. We have also used the AUC score to compare our solution with some other works.
+
+***Experimental Settings***<br>
+For the training part, we used binary cross-entropy as a Loss Function. We have used RMSProp Optimizer to optimize the loss obtained from the binary cross-entropy loss function, with a learning rate of 10e−4, and the network is trained for 30 epochs with early stopping. We trained with a batch size of 256. We have tracked performance with accuracy vs. epochs and loss vs. epochs plots.
+
 **Results**<br>
+
+We evaluated our model on two unpaired data sets for domain names. We took an input string from the dataset we created in the previous section, converted it into an image, and fed it to the model to generate a binary label. The results for the domain names are tabulated in Table 2. Out of the 400k test images, our model correctly categorized 372k images resulting in 0.93 accuracy. Our model achieved an f1-score of 0.93, 13 points higher than the previous models. Our model outperforms other baselines and comparable works on the other metrics, including accuracy, precision, recall, and AUC. The performance of other models on our dataset was also below par compared with the proposed datasets in their works, signifying our dataset’s variations, difficulty, and importance.
+
+
 **References**<br>
 **Citation**<br>
 
