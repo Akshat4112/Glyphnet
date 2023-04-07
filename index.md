@@ -10,13 +10,13 @@ Similarly, neural network-based approaches are employed to determine real domain
 **Introduction**<br>
 In cyber security, attackers employ different attacks to infiltrate our systems and networks, with the objective varying from stealing crucial information to inflicting system damage. One such deceptive attack is the homoglyph attack (Woodbridge et al. 2018), which involves an attacker trying to fool humans and computer systems by using characters and symbols that may appear visually similar to characters used in real domain and process names but  are different. For example, a typical homoglyph attack may involve changing “d” to “cl”, “o” to “θ”, and “l” to “1”. <br>
 
-![Real and Homoglyph domains](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/real_fake_domains.png) <br>
+![Real and Homoglyph domains](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/realfakedomains.png) <br>
 
 ![Real Rober Frost](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/realfrost.png) <br>
 ![Fake Robert Frost](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/fakefrost.png) <br>
 **Dataset** <br>
 
-![Real and Homoglyph Dataset](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/real-homoglyph.png) <br>
+![Real and Homoglyph Dataset](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/realhomoglyph.png) <br>
 ***Proposed Dataset***
 
 We have proposed a dataset consisting of real and homoglyph domains. In order to generate homoglyph domains,real domains are needed. We have obtained domains from the Domains Project(Turkynewych 2020). This repository is one of the largest collections of publicly available active domains. The entire repository comprises 500M domains, and we restricted our work to 2M domains due to hardware restrictions.
@@ -31,7 +31,7 @@ Homoglyph attacks exploit the weakness of human vision to differentiate real fro
 **Methodology**<br>
 
 ![Model Architecture](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/architecture.png) <br>
-![Attention Layer](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/attention_layer.png) <br>
+![Attention Layer](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/attentionlayer.png) <br>
 
 **Experimentation**<br>
 
@@ -44,7 +44,6 @@ For the training part, we used binary cross-entropy as a Loss Function. We have 
 **Results**<br>
 
 We evaluated our model on two unpaired data sets for domain names. We took an input string from the dataset we created in the previous section, converted it into an image, and fed it to the model to generate a binary label. The results for the domain names are tabulated in Table 2. Out of the 400k test images, our model correctly categorized 372k images resulting in 0.93 accuracy. Our model achieved an f1-score of 0.93, 13 points higher than the previous models. Our model outperforms other baselines and comparable works on the other metrics, including accuracy, precision, recall, and AUC. The performance of other models on our dataset was also below par compared with the proposed datasets in their works, signifying our dataset’s variations, difficulty, and importance.
-
 
 **References**<br>
 **Citation**<br>
