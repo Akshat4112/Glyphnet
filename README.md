@@ -1,14 +1,15 @@
-# GlyphNet: Homoglyph domains dataset and detection using attention-based Convolutional Neural Networks
-Akshat Gupta, Laxman Singh Tomar, Ridhima Garg <br>
-[Website](https://akshat4112.github.io/Glyphnet/) | [Paper](https://akshat4112.github.io/Glyphnet/) <br>
 
-**Introduction**<br>
-In cyber security, attackers employ different attacks to infiltrate our systems and networks, with the objective varying from stealing crucial information to inflicting system damage. One such deceptive attack is the homoglyph attack (Woodbridge et al. 2018), which involves an attacker trying to fool humans and computer systems by using characters and symbols that may appear visually similar to characters used in real domain and process names but  are different. For example, a typical homoglyph attack may involve changing “d” to “cl”, “o” to “θ”, and “l” to “1”. <br>
+# GlyphNet: Homoglyph domains dataset and detection using attention-based Convolutional Neural Networks
+GlyphNet is a project aimed at detecting homoglyph attacks using an attention-based Convolutional Neural Network (CNN). It leverages a unique approach involving image datasets of domain names, real and homoglyphs, to train the model.
+[Website](https://akshat4112.github.io/Glyphnet/) | [Paper](https://akshat4112.github.io/Glyphnet/) <br>
 
 ![Real and Homoglyph domains](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/real_fake_domains.png) <br>
 
-![Real Rober Frost](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/realfrost.png) <br>
-![Fake Robert Frost](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/fakefrost.png) <br>
+## Contents
+- `data/`: Contains the image dataset used in the project.
+- `notebooks/`: Jupyter Notebooks illustrating the methodology and experiments.
+- `src/`: Source code for the CNN model and data processing.
+
 **Dataset** <br>
 
 ![Real and Homoglyph Dataset](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/real-homoglyph.png) <br>
@@ -21,6 +22,14 @@ We have proposed a dataset consisting of real and homoglyph domains. In order to
 ![Model Architecture](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/architecture.png) <br>
 ![Attention Layer](https://github.com/Akshat4112/Glyphnet/blob/pages/resources/attention_layer.png) <br>
 
+## Getting Started
+- Follow installation instructions in `requirements.txt`.
+- Refer to Jupyter Notebooks for a detailed walkthrough.
 
+## Contribution
+Contributions to enhance detection methods and dataset quality are welcome. Please adhere to contribution guidelines.
+
+## License
+This project is under the MIT License.
 
 
