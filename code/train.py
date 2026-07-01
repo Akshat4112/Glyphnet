@@ -241,5 +241,3 @@ if __name__ == "__main__":
     obj.plotGraphs()
     obj.Evaluation(os.path.join(path_arg, "test", "test"))
     print("Attention CNN Experiment Completed")
-
-print("Attention CNN Experiment Completed")
