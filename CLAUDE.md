@@ -82,11 +82,11 @@ hardcode `../data/...` paths. Check the top of each script before running.
    (Directory names here differ from stage 3's output; reconcile paths to your
    actual data layout before running.)
 
-5. **`train.py`** (hardcodes `../data/train`, `../data/valid/valid`, etc.)
+5. **`train.py --path_data ../data`**
    The core training script. Defines a `NeuralNetwork` class with:
    - `DataGenerator` — Keras `ImageDataGenerator(rescale=1./255)` +
-     `flow_from_directory`, `class_mode='binary'`, `target_size=(256,256)`
-     (images load as 3-channel RGB even though rendered grayscale).
+     `flow_from_directory`, `class_mode='binary'`, `color_mode='grayscale'`,
+     `target_size=(256,256)`, batch size set here.
    - `SimpleCNN(config)` — 4 conv blocks → dense → sigmoid.
    - `AttentionCNN(config)` — same backbone with a CBAM attention block after
      each conv block (via `attach_attention_module`).
@@ -117,9 +117,17 @@ image for manual inspection.
     spatial attention (https://arxiv.org/abs/1807.06521). This is the one wired
     into `AttentionCNN`.
 - Loss: `binary_crossentropy`; optimizer: `RMSprop(lr=1e-4)`; metric: `acc`.
-- `EarlyStopping(monitor='loss', patience=3)` is constructed but note it is not
-  always passed into `fit` — only `WandbCallback` is. Preserve existing callback
-  wiring unless explicitly changing training behavior.
+- `EarlyStopping(monitor='loss', patience=3)` and `WandbCallback()` are both
+  passed into `fit`.
+- Images are rendered grayscale and loaded as **1 channel** (`color_mode='grayscale'`,
+  input shape `(256,256,1)`). The batch size is set on the generator in
+  `DataGenerator`, not on `fit` (where it is ignored for iterators).
+- `Evaluation`/`predict.py` threshold the single sigmoid output at `0.5`
+  (`(preds > 0.5)`), not `argmax` — argmax over a 1-element row is always 0.
+- Model construction is separated from training: `build_simple_cnn()` /
+  `build_attention_cnn()` return a compiled model; `SimpleCNN()`/`AttentionCNN()`
+  build then fit. Importing `train`/`dataGeneration` no longer runs the pipeline
+  (guarded by `if __name__ == "__main__"`).
 
 ## Environment & conventions
 
@@ -132,24 +140,23 @@ image for manual inspection.
   with a hardcoded project/entity — update these to your own before running, or
   set `WANDB_MODE=offline` / `disabled` to run without an account.
 - Coding style is research-grade and inconsistent (mixed tabs/spaces across
-  files, `try/except` that silently logs to files, duplicated
-  `multiprocessing_func_*` definitions). **Match the style of the file you are
-  editing** rather than reformatting the whole file.
-- Generated artifacts (`models/*.h5`, `figures/*.png`, `code/wandb/**`) are
-  committed to the repo. Treat them as data — don't hand-edit them, and be
-  deliberate before regenerating/overwriting them.
-- `data/` is gitignored; large inputs/outputs live there and are never committed.
+  files). **Match the style of the file you are editing** rather than
+  reformatting the whole file.
+- `models/*.h5` and `figures/*.png` are generated artifacts. Only a couple of
+  representative models are tracked (`model_v1.h5`, `30epochs_model.h5`); the rest
+  are gitignored via `models/.gitignore`. Treat them as data — don't hand-edit.
+- `data/` and `code/wandb/` are gitignored; large inputs/outputs and W&B run logs
+  live there and are never committed.
 
 ## Known rough edges (do not "fix" silently)
 
-- **`Dockerfile` is stale**: its `CMD [ "src/scripts/trai_cnn.py" ]` points at a
-  path that does not exist (there is no `src/` dir; the training script is
-  `code/train.py`). The `RUN [ "python3","import nltk..." ]` line is also
-  malformed. Flag before relying on the Docker build.
-- Hardcoded paths and the `--path_data` argument are used inconsistently across
-  scripts; several intermediate directory names (`real`/`fake` vs
-  `domain_pics`/`fake_pics` vs `final_*`) don't line up between stages. Trace the
-  actual paths for the specific script you're running.
+- Inter-stage directory names still differ by design (`real`/`fake` →
+  `domain_pics`/`fake_pics` → `final_*`); all stages now take `--path_data`
+  (default `../data`), but trace the actual subdir layout for the stage you run.
+- `ARIAL.TTF` is a required, non-committed input expected at
+  `<path_data>/ARIAL.TTF` — rendering scripts fail without it.
+- `attentionModule.se_block` still uses the legacy `._keras_shape` API and is
+  unused (only `cbam_block` is wired in). Leave it unless explicitly asked.
 - `code/archive/` holds superseded code (a Streamlit `app.py`, a Flask-style
   `api.py`, baseline CNN, and a `get_data.py` that pulls a spoof-domain pickle
   from the endgameinc/homoglyph repo). It is **not** part of the current pipeline
