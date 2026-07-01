@@ -30,18 +30,17 @@ code/               # All source scripts (run from inside this dir)
   dataSplit.py        # real/ + fake/ -> train/ valid/ test/ (70/20/10)
   dataPreprocess.py   # reorganize split dirs into final_{train,test,valid}/{real,phish}
   attentionModule.py  # SE and CBAM attention blocks (imported by train.py)
-  train.py            # trains SimpleCNN + AttentionCNN; logs to wandb; saves models/figures
+  train.py            # trains SimpleCNN + AttentionCNN; prints metrics; saves models/figures
   predict.py          # loads a saved .h5 model and evaluates on final_test
   SingleImage.py      # renders one domain string to a single PNG (ad hoc utility)
   archive/            # older/superseded scripts (Streamlit app, Flask api, baselines) - not part of the current pipeline
-  wandb/              # archived Weights & Biases run logs (generated artifacts, do not edit)
 notebooks/          # Jupyter notebooks: exploratory work + full walkthrough
 models/             # Saved Keras .h5 models (generated artifacts, checked in)
 figures/            # Saved accuracy/loss plots per run (generated artifacts, checked in)
 Backup/domains_final.txt  # ~22 MB list of real domains, one per line (pipeline input)
 data/               # gitignored working dir - all scripts read/write here at runtime
-Dockerfile          # Ubuntu 20.04 + pip install; NOTE: its CMD path is stale (see below)
-requirements.txt    # pinned deps (TF 2.9.1, Keras 2.9.0, wandb, etc.)
+Dockerfile          # Ubuntu 20.04 + pip install; runs code/train.py
+requirements.txt    # pinned deps (TF 2.9.1, Keras 2.9.0, etc.)
 ```
 
 ## The end-to-end pipeline
@@ -93,7 +92,7 @@ hardcode `../data/...` paths. Check the top of each script before running.
    - `plotGraphs` — saves acc/loss curves to `../figures/`.
    - `Evaluation` — computes accuracy/precision/recall/F1/kappa/AUC/confusion
      matrix on the test set.
-   Runs both models, logging to **Weights & Biases** (`wandb.init`). Saves models
+   Runs both models, printing evaluation metrics to stdout. Saves models
    to `../models/modelSimpleCNN<timestamp>.h5` and
    `../models/modelAttentionCNN<timestamp>.h5`.
 
@@ -117,8 +116,7 @@ image for manual inspection.
     spatial attention (https://arxiv.org/abs/1807.06521). This is the one wired
     into `AttentionCNN`.
 - Loss: `binary_crossentropy`; optimizer: `RMSprop(lr=1e-4)`; metric: `acc`.
-- `EarlyStopping(monitor='loss', patience=3)` and `WandbCallback()` are both
-  passed into `fit`.
+- `EarlyStopping(monitor='loss', patience=3)` is passed into `fit`.
 - Images are rendered grayscale and loaded as **1 channel** (`color_mode='grayscale'`,
   input shape `(256,256,1)`). The batch size is set on the generator in
   `DataGenerator`, not on `fit` (where it is ignored for iterators).
@@ -136,9 +134,9 @@ image for manual inspection.
   `attentionModule.py` mixes the modern `.shape` API with the legacy
   `._keras_shape` API (in `se_block`), so it is version-sensitive.
 - Install: `pip install -r requirements.txt`.
-- Experiment tracking is **Weights & Biases**. `train.py` calls `wandb.init`
-  with a hardcoded project/entity — update these to your own before running, or
-  set `WANDB_MODE=offline` / `disabled` to run without an account.
+- No experiment-tracking service. `train.py` prints evaluation metrics to stdout
+  and `plotGraphs` writes accuracy/loss curves to `figures/`. (Weights & Biases
+  was previously used and has been removed.)
 - Coding style is research-grade and inconsistent (mixed tabs/spaces across
   files). **Match the style of the file you are editing** rather than
   reformatting the whole file.

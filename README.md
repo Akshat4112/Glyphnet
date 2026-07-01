@@ -49,8 +49,8 @@ python train.py           --path_data ../data   # train SimpleCNN + AttentionCNN
 python predict.py         --path_data ../data --model ../models/model_v1.h5   # evaluate a saved model
 ```
 
-Experiment tracking uses [Weights & Biases](https://wandb.ai). To run without a
-W&B account, set `WANDB_MODE=offline` (or `disabled`).
+Training prints evaluation metrics (accuracy, precision, recall, F1, kappa, ROC
+AUC, confusion matrix) and saves accuracy/loss curves under `figures/`.
 
 ## Tests
 

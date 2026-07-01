@@ -10,7 +10,6 @@ import pytest
 
 pytest.importorskip("tensorflow")
 pytest.importorskip("PIL.Image")
-wandb = pytest.importorskip("wandb")
 
 from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 
@@ -38,8 +37,6 @@ def _build_split(root, n_per_class):
 def test_one_epoch_simple_cnn(tmp_path):
     root = str(tmp_path)
     _build_split(root, n_per_class=5)
-
-    wandb.init(mode="disabled")  # SimpleCNN uses WandbCallback; keep it offline
 
     net = train.NeuralNetwork()
     net.DataGenerator(os.path.join(root, "train"), os.path.join(root, "valid"), batch_size=2)

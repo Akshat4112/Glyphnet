@@ -11,8 +11,6 @@ import tensorflow.keras.backend as K
 from tensorflow.keras import Input
 from tensorflow.keras import Model
 import tensorflow as tf
-import wandb
-from wandb.keras import WandbCallback
 import argparse
 import os
 from datetime import datetime
@@ -91,7 +89,7 @@ class NeuralNetwork:
                                   steps_per_epoch=self.config['steps_per_epoch'],
                                   epochs=self.config['epochs'],
                                   verbose=1,
-                                  callbacks=[WandbCallback(), callback])
+                                  callbacks=[callback])
 
     # save model
     self.name = '../models/modelSimpleCNN' + str(datetime.now()) + '.h5'
@@ -144,7 +142,7 @@ class NeuralNetwork:
                                   steps_per_epoch=self.config['steps_per_epoch'],
                                   epochs=self.config['epochs'],
                                   verbose=1,
-                                  callbacks=[WandbCallback(), callback])
+                                  callbacks=[callback])
 
     # save model
     self.name = '../models/modelAttentionCNN' + str(datetime.now()) + '.h5'
@@ -209,52 +207,39 @@ class NeuralNetwork:
     matrix = confusion_matrix(y_true, y_pred)
     print(matrix)
 
-    wandb.log({'Accuracy': accuracy, 
-              'Precision': precision, 
-              'Recall': recall, 
-              'f1-score': f1, 
-              'kappa': kappa, 
-              'auc': auc, 
-              'confusion_matrix': matrix})
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Parameters while pasing the argument..")
     parser.add_argument("--path_data", type=str, default="../data", help="Define path for the data")
     path_arg = parser.parse_args().path_data
 
-    run = wandb.init(project="Homoglyph Detection", entity="team_uni_stuttgart")
-
     obj = NeuralNetwork()
 
     obj.DataGenerator(os.path.join(path_arg, 'train'), os.path.join(path_arg, 'valid', 'valid'), batch_size=128)
     print("Data Generation Completed")
 
-    config = wandb.config = {"learning_rate": 1e-4,
-                              "epochs": 50,
-                              "steps_per_epoch":50,
-                              "batch_size": 128,
-                              "architecture":"Simple CNN",
-                              "dataset":"Glyphnet Dataset",}
+    config = {"learning_rate": 1e-4,
+              "epochs": 50,
+              "steps_per_epoch":50,
+              "batch_size": 128,
+              "architecture":"Simple CNN",
+              "dataset":"Glyphnet Dataset",}
 
     obj.SimpleCNN(config)
     obj.plotGraphs()
     obj.Evaluation(os.path.join(path_arg, "test", "test"))
     print("Simple CNN Experiment Completed")
-    run.finish()
 
-    run = wandb.init(project="Homoglyph Detection", entity="team_uni_stuttgart", reinit=True)
-
-    config = wandb.config = {"learning_rate": 1e-4,
-                              "epochs": 50,
-                              "steps_per_epoch":50,
-                              "batch_size": 128,
-                              "architecture":"Attention CNN",
-                              "dataset":"Glyphnet Dataset",}
+    config = {"learning_rate": 1e-4,
+              "epochs": 50,
+              "steps_per_epoch":50,
+              "batch_size": 128,
+              "architecture":"Attention CNN",
+              "dataset":"Glyphnet Dataset",}
 
     obj.AttentionCNN(config)
     obj.plotGraphs()
     obj.Evaluation(os.path.join(path_arg, "test", "test"))
-    wandb.finish()
+    print("Attention CNN Experiment Completed")
 
 print("Attention CNN Experiment Completed")
