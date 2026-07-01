@@ -1,0 +1,5 @@
+# Model checkpoints are large binaries. Ignore them all by default and keep
+# only a couple of representative models tracked for reference / predict.py.
+*.h5
+!model_v1.h5
+!30epochs_model.h5
