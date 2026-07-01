@@ -54,75 +54,28 @@ def generate_fake(data):
   data.apply(img, path = os.path.join(path_arg, "fake"))
 
 
-def multiprocessing_func_1(data):
-  generate_real(data)
+# Split points used to shard the data across worker processes.
+CHUNKS = [(0, 500000), (500000, 1000000), (1000000, 1500000), (1500000, None)]
 
-def multiprocessing_func_2(data):
-  generate_fake(data)
 
-def multiprocessing_func_3(data):
-  generate_real(data)
+def run_in_parallel(target, column):
+    """Render one column of `data` in parallel across CHUNKS worker processes.
 
-def multiprocessing_func_4(data):
-  generate_fake(data)
-
-def multiprocessing_func_5(data):
-  generate_real(data)
-
-def multiprocessing_func_6(data):
-  generate_fake(data)
-
-def multiprocessing_func_7(data):
-  generate_real(data)
-
-def multiprocessing_func_8(data):
-  generate_fake(data)
-
-'''
-def multiprocessing_func_9(data):
-  generate_real(data)
-
-def multiprocessing_func_10(data):
-  generate_fake(data)
-'''
+    column 0 = real domains, column 1 = homoglyph (fake) domains.
+    """
+    processes = []
+    for start, stop in CHUNKS:
+        p = multiprocessing.Process(target=target, args=(data.iloc[start:stop, column],))
+        processes.append(p)
+        p.start()
+    for process in processes:
+        process.join()
 
 
 if __name__ == '__main__':
     starttime = time.time()
-    
-    processes_1 = []
-    processes_2 = []
 
-    p1 = multiprocessing.Process(target=multiprocessing_func_1, args=(data.iloc[:500000, 0],))
-    processes_1.append(p1)
-    p2 = multiprocessing.Process(target=multiprocessing_func_3, args=(data.iloc[500000:1000000, 0],))
-    processes_1.append(p2)
-    p3 = multiprocessing.Process(target=multiprocessing_func_5, args=(data.iloc[1000000:1500000, 0],))
-    processes_1.append(p3)
-    p4 = multiprocessing.Process(target=multiprocessing_func_7, args=(data.iloc[1500000:, 0],))
-    processes_1.append(p4)
-    p1.start()
-    p2.start()
-    p3.start()
-    p4.start()
-
-    for process in processes_1:
-        process.join()
-            
-    p1 = multiprocessing.Process(target=multiprocessing_func_2, args=(data.iloc[:500000, 1],))
-    processes_2.append(p1)
-    p2 = multiprocessing.Process(target=multiprocessing_func_4, args=(data.iloc[500000:100000, 1],))
-    processes_2.append(p2)
-    p3 = multiprocessing.Process(target=multiprocessing_func_6, args=(data.iloc[100000:1500000, 1],))
-    processes_2.append(p3)
-    p4 = multiprocessing.Process(target=multiprocessing_func_8, args=(data.iloc[1500000:, 1],))
-    processes_2.append(p4)
-    p1.start()
-    p2.start()
-    p3.start()
-    p4.start()
-
-    for process in processes_2:
-        process.join()
+    run_in_parallel(generate_real, column=0)
+    run_in_parallel(generate_fake, column=1)
 
     print('Time taken = {} seconds'.format(time.time() - starttime))
