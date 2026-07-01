@@ -1,87 +1,45 @@
 import shutil
-import os 
+import os
+import argparse
 
-BASE_PATH = '../data/'
-len_real = len(os.listdir(BASE_PATH +  'real'))
-len_fake = len(os.listdir(BASE_PATH + 'fake'))
-
-print(len_real)
-
-len_real_train = int(0.7*len_real)
-len_fake_train = int(0.7*len_fake)
-
-len_real_valid = int(0.2*len_real)
-len_fake_valid = int(0.2*len_fake)
-
-len_real_test = int(0.1*len_real)
-len_fake_test = int(0.1*len_fake)
+parser = argparse.ArgumentParser(description="Parameters while pasing the argument..")
+parser.add_argument("--path_data", type=str, default="../data", help="Define path for the data")
+BASE_PATH = parser.parse_args().path_data
 
 
-os.mkdir(BASE_PATH + 'train')
-os.mkdir(BASE_PATH + 'test')
-os.mkdir(BASE_PATH + 'valid')
+def split_class(class_name):
+    """Move rendered images for one class into train/valid/test at 70/20/10.
 
-os.mkdir(BASE_PATH + 'train/real')
-os.mkdir(BASE_PATH + 'train/fake')
+    Files are sorted first so the split is reproducible across runs (os.listdir
+    order is otherwise undefined).
+    """
+    src = os.path.join(BASE_PATH, class_name)
+    files = sorted(os.listdir(src))
+    total = len(files)
+    print(class_name, total)
 
-os.mkdir(BASE_PATH + 'test/real')
-os.mkdir(BASE_PATH + 'test/fake')
+    n_train = int(0.7 * total)
+    n_valid = int(0.2 * total)
+    # test gets the remainder so every file lands in exactly one split
+    splits = {
+        'train': files[:n_train],
+        'valid': files[n_train:n_train + n_valid],
+        'test': files[n_train + n_valid:],
+    }
 
-os.mkdir(BASE_PATH + 'valid/real')
-os.mkdir(BASE_PATH + 'valid/fake')
+    for split, split_files in splits.items():
+        dst = os.path.join(BASE_PATH, split, class_name)
+        os.makedirs(dst, exist_ok=True)
+        for item in split_files:
+            shutil.move(os.path.join(src, item), dst)
 
-
-
-print(len_real_train)
-
-c = 0
-for item in os.listdir(BASE_PATH + 'real/'):
-    if c==len_real_train:
-        break
+    # only remove the source dir if the split consumed everything
+    remaining = os.listdir(src)
+    if not remaining:
+        os.rmdir(src)
     else:
-        shutil.move(BASE_PATH + 'real/'+item, BASE_PATH + 'train/real/')
-        c+=1
-
-c = 0        
-for item in os.listdir(BASE_PATH + 'real/'):
-    if c==len_real_test:
-        break
-    else:
-        shutil.move(BASE_PATH + 'real/'+item, BASE_PATH + 'test/real/')
-        c+=1
-
-c = 0
-for item in os.listdir(BASE_PATH + 'real/'):
-    if c==len_real_valid:
-        break
-    else:
-        shutil.move(BASE_PATH + 'real/'+item, BASE_PATH +'valid/real/')        
-        c+=1
+        print("Not removing %s: %d files remain" % (src, len(remaining)))
 
 
-c = 0
-for item in os.listdir(BASE_PATH + 'fake/'):
-    if c==len_fake_train:
-        break
-    else:
-        shutil.move(BASE_PATH + 'fake/'+item,  BASE_PATH + 'train/fake/')
-        c+=1
-
-c = 0        
-for item in os.listdir(BASE_PATH + 'fake/'):
-    if c==len_fake_test:
-        break
-    else:
-        shutil.move(BASE_PATH + 'fake/'+item, BASE_PATH + 'test/fake/')
-        c+=1
-
-c = 0
-for item in os.listdir(BASE_PATH + 'fake/'):
-    if c==len_fake_valid:
-        break
-    else:
-        shutil.move(BASE_PATH + 'fake/'+item, BASE_PATH + 'valid/fake/')        
-        c+=1
-
-os.rmdir(BASE_PATH + 'fake')
-os.rmdir(BASE_PATH + 'real')
+for name in ('real', 'fake'):
+    split_class(name)

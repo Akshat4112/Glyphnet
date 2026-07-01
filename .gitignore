@@ -1,1 +1,13 @@
+# Working data directory (datasets, rendered images, ARIAL.TTF, errors.txt)
 data/
+
+# Weights & Biases run logs (regenerated on every training run)
+code/wandb/
+wandb/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Saved model checkpoints - large binaries; keep a couple of representative
+# ones tracked explicitly (see models/.gitignore) and ignore the rest.

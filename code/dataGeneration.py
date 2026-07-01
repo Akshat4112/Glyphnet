@@ -5,9 +5,19 @@ import re, random
 import argparse
 import os
 
-parser = argparse.ArgumentParser(description="Parameters while pasing the argument..")
-parser.add_argument("--path_data", type=str, help="Define path for the data")
-path_arg  = parser.parse_args().path_data
+# Directory the error log is written to; set from --path_data in __main__.
+ERROR_DIR = "."
+
+
+def log_error(domain):
+	"""Append a domain that could not be transformed to a single errors log."""
+	error_path = os.path.join(ERROR_DIR, "errors.txt")
+	with open(error_path, "a+") as file_object:
+		file_object.seek(0)
+		data = file_object.read(100)
+		if len(data) > 0:
+			file_object.write("\n")
+		file_object.write(domain)
 
 
 homo_1 = []
@@ -54,13 +64,8 @@ def homo_gen_1(domain):
 		char_replace = glyphs[char][index_2]
 		result_1 = re.sub(f'[{char}]', char_replace, domain, 1)
 		return result_1
-	except:
-		with open("errors.txt", "a+") as file_object:
-			file_object.seek(0)
-			data = file_object.read(100)
-			if len(data) > 0 :
-				file_object.write("\n")
-			file_object.write(domain)
+	except (KeyError, ValueError, IndexError):
+		log_error(domain)
         
 def homo_gen_2(domain):
 	try:
@@ -81,21 +86,8 @@ def homo_gen_2(domain):
 		result_2 = re.sub(f'[{char}]', char_replace, result_1, 1)
 
 		return result_2
-	except:
-		with open("../data/errors.txt", "a+") as file_object:
-			file_object.seek(0)
-			data = file_object.read(100)
-			if len(data) > 0 :
-				file_object.write("\n")
-			file_object.write(domain)
-
-domain_file = os.path.join(path_arg, "domains_final.txt")
-
-with open(domain_file, "r") as f:
-	domains_1 = f.read().splitlines()[:1000000]
-
-with open(domain_file, "r") as f:
-	domains_2 = f.read().splitlines()[1000000:2000000]
+	except (KeyError, ValueError, IndexError):
+		log_error(domain)
 
 
 homo = []
@@ -109,6 +101,17 @@ def multiprocessing_func_2(domains_lis):
 		homo_2.append(homo_gen_2(domain))
 
 if __name__ == "__main__":
+	parser = argparse.ArgumentParser(description="Parameters while pasing the argument..")
+	parser.add_argument("--path_data", type=str, default="../data", help="Define path for the data")
+	path_arg = parser.parse_args().path_data
+	ERROR_DIR = path_arg
+
+	domain_file = os.path.join(path_arg, "domains_final.txt")
+	with open(domain_file, "r") as f:
+		domains_1 = f.read().splitlines()[:1000000]
+	with open(domain_file, "r") as f:
+		domains_2 = f.read().splitlines()[1000000:2000000]
+
 	starttime = time.time()
 	with Manager() as manager:
 		homo_1 = manager.list()
@@ -141,7 +144,7 @@ if __name__ == "__main__":
 
 		dataf = pd.concat([dataf_1, dataf_2])
 
-		dataf.to_csv('../data/dataset_final.csv', index = False)
+		dataf.to_csv(os.path.join(path_arg, 'dataset_final.csv'), index = False)
 
 		print()    
 		print('Time taken = {} seconds'.format(time.time() - starttime))
