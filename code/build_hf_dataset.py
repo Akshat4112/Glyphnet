@@ -74,57 +74,87 @@ def render(text, font):
     return buf.getvalue()
 
 
-def image_generator(csv_path, font_path):
-    """Yield one real + one phish image record per CSV row."""
+def image_generator(csv_path, font_path, shards):
+    """Yield one real + one phish image record per CSV row, for the given shards.
+
+    `shards` is a list of (start, end) row ranges. datasets splits the shard list
+    across `num_proc` workers (scalar kwargs like csv_path/font_path are passed
+    to every worker unchanged), so rendering runs in parallel.
+    """
     font = ImageFont.truetype(font_path, FONT_SIZE)
     df = pd.read_csv(csv_path)
-    for real, phish in zip(df["domain"].astype(str), df["homoglyphs"].astype(str)):
-        yield {"image": {"bytes": render(real, font), "path": None},
-               "label": "real", "text": real}
-        yield {"image": {"bytes": render(phish, font), "path": None},
-               "label": "phish", "text": phish}
+    for start, end in shards:
+        sub = df.iloc[start:end]
+        for real, phish in zip(sub["domain"].astype(str), sub["homoglyphs"].astype(str)):
+            yield {"image": {"bytes": render(real, font), "path": None},
+                   "label": "real", "text": real}
+            yield {"image": {"bytes": render(phish, font), "path": None},
+                   "label": "phish", "text": phish}
+
+
+IMAGE_FEATURES = Features({
+    "image": HfImage(),
+    "label": ClassLabel(names=["real", "phish"]),
+    "text": Value("string"),
+})
+
+
+def build_images_dataset(csv_path, font_path, num_proc):
+    """Render every domain to an image dataset, parallelized across num_proc."""
+    n_rows = len(pd.read_csv(csv_path, usecols=["domain"]))
+    bounds = [round(i * n_rows / num_proc) for i in range(num_proc + 1)]
+    shards = list(zip(bounds[:-1], bounds[1:]))  # one (start,end) per worker
+    print("Rendering %d images across %d processes" % (2 * n_rows, num_proc))
+    return Dataset.from_generator(
+        image_generator,
+        features=IMAGE_FEATURES,
+        gen_kwargs={"csv_path": csv_path, "font_path": font_path, "shards": shards},
+        num_proc=num_proc,
+    )
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Publish the GlyphNet dataset to the HF Hub.")
+    parser = argparse.ArgumentParser(description="Build/publish the GlyphNet dataset for the HF Hub.")
     parser.add_argument("--path_data", default="../data", help="dir containing dataset_final.csv and ARIAL.TTF")
-    parser.add_argument("--repo", required=True, help="target HF dataset repo id, e.g. akshat4112/glyphnet")
+    parser.add_argument("--work_dir", default="../data/hf_build", help="where the built dataset is saved locally")
+    parser.add_argument("--stage", choices=["build", "push", "all"], default="all",
+                        help="build = render + save locally (no token); push = upload saved dataset (token)")
+    parser.add_argument("--repo", help="target HF dataset repo id (required for push)")
     parser.add_argument("--token", default=os.environ.get("HF_TOKEN"), help="HF token (or set HF_TOKEN)")
     parser.add_argument("--private", action="store_true", help="create the repo as private")
     parser.add_argument("--max_shard_size", default="500MB")
-    parser.add_argument("--skip_images", action="store_true", help="upload only the pairs config")
+    parser.add_argument("--num_proc", type=int, default=os.cpu_count(), help="parallelism for rendering")
+    parser.add_argument("--skip_images", action="store_true", help="pairs config only")
     args = parser.parse_args()
-
-    if not args.token:
-        raise SystemExit("No HF token: pass --token or set HF_TOKEN in the environment.")
 
     csv_path = os.path.join(args.path_data, "dataset_final.csv")
     font_path = os.path.join(args.path_data, "ARIAL.TTF")
+    pairs_dir = os.path.join(args.work_dir, "pairs")
+    images_dir = os.path.join(args.work_dir, "images")
 
-    # --- config: pairs (the domain/homoglyph table) ---
-    print("Uploading 'pairs' config from", csv_path)
-    pairs = Dataset.from_pandas(pd.read_csv(csv_path), preserve_index=False)
-    pairs.push_to_hub(args.repo, config_name="pairs", private=args.private,
-                      token=args.token, max_shard_size=args.max_shard_size)
+    if args.stage in ("build", "all"):
+        print("== BUILD: saving pairs ->", pairs_dir)
+        Dataset.from_pandas(pd.read_csv(csv_path), preserve_index=False).save_to_disk(pairs_dir)
+        if not args.skip_images:
+            print("== BUILD: rendering images ->", images_dir)
+            build_images_dataset(csv_path, font_path, args.num_proc).save_to_disk(images_dir)
+        print("Build complete. Saved under", args.work_dir)
 
-    # --- config: images (rendered PNGs, labelled real/phish) ---
-    if not args.skip_images:
-        print("Rendering + uploading 'images' config (this streams; no bulk PNGs on disk)")
-        features = Features({
-            "image": HfImage(),
-            "label": ClassLabel(names=["real", "phish"]),
-            "text": Value("string"),
-        })
-        images = Dataset.from_generator(
-            image_generator,
-            features=features,
-            gen_kwargs={"csv_path": csv_path, "font_path": font_path},
-        )
-        images.push_to_hub(args.repo, config_name="images", private=args.private,
-                           token=args.token, max_shard_size=args.max_shard_size)
-
-    update_card(args.repo, args.token)
-    print("Done ->", "https://huggingface.co/datasets/" + args.repo)
+    if args.stage in ("push", "all"):
+        if not args.token:
+            raise SystemExit("No HF token: pass --token or set HF_TOKEN (needed for push).")
+        if not args.repo:
+            raise SystemExit("No --repo given (needed for push).")
+        from datasets import load_from_disk
+        print("== PUSH: pairs ->", args.repo)
+        load_from_disk(pairs_dir).push_to_hub(args.repo, config_name="pairs", private=args.private,
+                                              token=args.token, max_shard_size=args.max_shard_size)
+        if not args.skip_images:
+            print("== PUSH: images ->", args.repo)
+            load_from_disk(images_dir).push_to_hub(args.repo, config_name="images", private=args.private,
+                                                   token=args.token, max_shard_size=args.max_shard_size)
+        update_card(args.repo, args.token)
+        print("Done ->", "https://huggingface.co/datasets/" + args.repo)
 
 
 def update_card(repo, token):
