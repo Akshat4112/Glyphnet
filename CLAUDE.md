@@ -34,9 +34,8 @@ code/               # All source scripts (run from inside this dir)
   predict.py          # loads a saved .h5 model and evaluates on final_test
   SingleImage.py      # renders one domain string to a single PNG (ad hoc utility)
   archive/            # older/superseded scripts (Streamlit app, Flask api, baselines) - not part of the current pipeline
-notebooks/          # Jupyter notebooks: exploratory work + full walkthrough
 models/             # Saved Keras .h5 models (generated artifacts, checked in)
-figures/            # Saved accuracy/loss plots per run (generated artifacts, checked in)
+figures/            # Saved accuracy/loss plots per run (generated at runtime, gitignored)
 Backup/domains_final.txt  # ~22 MB list of real domains, one per line (pipeline input)
 data/               # gitignored working dir - all scripts read/write here at runtime
 Dockerfile          # Ubuntu 20.04 + pip install; runs code/train.py
@@ -142,7 +141,8 @@ image for manual inspection.
   reformatting the whole file.
 - `models/*.h5` and `figures/*.png` are generated artifacts. Only a couple of
   representative models are tracked (`model_v1.h5`, `30epochs_model.h5`); the rest
-  are gitignored via `models/.gitignore`. Treat them as data — don't hand-edit.
+  are gitignored via `models/.gitignore`. `figures/` is gitignored entirely
+  (kept as a directory via `figures/.gitignore`). Treat them as data — don't hand-edit.
 - `data/` and `code/wandb/` are gitignored; large inputs/outputs and W&B run logs
   live there and are never committed.
 

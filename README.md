@@ -124,9 +124,8 @@ code/               # pipeline scripts (run from inside this dir)
   predict.py          #   evaluate a saved .h5 model
   build_hf_dataset.py #   build + publish the dataset to the Hugging Face Hub
   archive/            #   older/superseded scripts (not part of the pipeline)
-notebooks/          # exploratory notebooks + full walkthrough
 models/             # a couple of representative .h5 models (rest gitignored)
-figures/            # accuracy/loss plots
+figures/            # accuracy/loss plots (generated at runtime, gitignored)
 Backup/             # domains_final.txt (pipeline input)
 tests/              # fast, dataset-free smoke tests
 data/               # gitignored working dir (created at runtime)

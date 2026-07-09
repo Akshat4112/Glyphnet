@@ -1,0 +1,4 @@
+# Generated accuracy/loss plots (written by train.py -> plotGraphs).
+# Ignore the images but keep this directory present so runs can write here.
+*
+!.gitignore

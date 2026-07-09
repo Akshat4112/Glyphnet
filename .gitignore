@@ -9,5 +9,8 @@ wandb/
 __pycache__/
 *.py[cod]
 
+# IDE
+.idea/
+
 # Saved model checkpoints - large binaries; keep a couple of representative
 # ones tracked explicitly (see models/.gitignore) and ignore the rest.
