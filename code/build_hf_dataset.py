@@ -195,7 +195,8 @@ def update_card(repo, token):
     card = DatasetCard.load(repo, repo_type="dataset", token=token)
     card.data.license = "mit"
     card.data.pretty_name = "GlyphNet Homoglyph Domains"
-    card.data.tags = sorted(set((card.data.tags or []) +
+    existing_tags = getattr(card.data, "tags", None) or []
+    card.data.tags = sorted(set(existing_tags +
                                 ["homoglyph", "phishing", "idn-homograph",
                                  "cybersecurity", "domain-spoofing", "security"]))
     # Replace the card body with our prose (keeps card.data's dataset_info YAML),
