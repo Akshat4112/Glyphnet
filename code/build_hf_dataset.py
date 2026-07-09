@@ -87,7 +87,13 @@ here, so glyph shapes may differ slightly from the original figures.
   respect the provided splits (or group by `pair_id`) to avoid leakage.
 - Rendering font differs from the paper (DejaVu Sans vs Arial).
 
+## License
+
+MIT (same as the source repository).
+
 ## Citation
+
+If you use this dataset in your research, please cite the GlyphNet paper:
 
 ```bibtex
 @article{gupta2023glyphnet,
@@ -98,9 +104,9 @@ here, so glyph shapes may differ slightly from the original figures.
 }
 ```
 
-## License
-
-MIT (same as the source repository).
+> Gupta, A., Tomar, L. S., & Garg, R. (2023). *GlyphNet: Homoglyph domains
+> dataset and detection using attention-based Convolutional Neural Networks.*
+> arXiv:2306.10392.
 """
 
 
@@ -192,8 +198,9 @@ def update_card(repo, token):
     card.data.tags = sorted(set((card.data.tags or []) +
                                 ["homoglyph", "phishing", "idn-homograph",
                                  "cybersecurity", "domain-spoofing", "security"]))
-    if "GlyphNet: Homoglyph Domains Dataset" not in card.text:
-        card.text = card.text.rstrip() + "\n\n" + CARD_PROSE.strip() + "\n"
+    # Replace the card body with our prose (keeps card.data's dataset_info YAML),
+    # so re-runs don't duplicate or leave stale text.
+    card.text = CARD_PROSE.strip() + "\n"
     card.push_to_hub(repo, repo_type="dataset", token=token)
 
 
