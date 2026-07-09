@@ -1,80 +1,200 @@
-<html>
-    <head>
-        <title>Glyphnet</title>
-    </head>
-    <body>
-        
-            <h1>
-                GlyphNet: Homoglyph domains dataset and detection using attention-based Convolutional Neural Networks
-            </h1>
-        
-        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GlyphNet: Homoglyph Domains Dataset &amp; Detection with Attention-based CNNs</title>
+    <meta name="description" content="GlyphNet: an image dataset of real and homoglyph domains and an attention-based CNN for detecting homoglyph (IDN homograph) phishing attacks, reaching 0.93 AUC.">
+    <link rel="canonical" href="https://akshat4112.github.io/Glyphnet/">
 
-        <h4>Akshat Gupta, Laxman Singh Tomar, Ridhima Garg</h4>
-        
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GlyphNet: Homoglyph Domains Dataset & Detection using Attention-based CNNs">
+    <meta property="og:description" content="An image dataset of real and homoglyph domains plus an attention-based CNN for detecting homoglyph phishing attacks (0.93 AUC).">
+    <meta property="og:url" content="https://akshat4112.github.io/Glyphnet/">
+    <meta property="og:image" content="https://akshat4112.github.io/Glyphnet/resources/realfakedomains.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GlyphNet: Homoglyph Domains Dataset & Detection">
+    <meta name="twitter:description" content="Image dataset of real and homoglyph domains + an attention-based CNN for homoglyph phishing detection.">
+    <meta name="twitter:image" content="https://akshat4112.github.io/Glyphnet/resources/realfakedomains.png">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --fg: #1a1a1a;
+            --muted: #5a5a5a;
+            --accent: #2563eb;
+            --border: #e5e7eb;
+            --card: #f7f8fa;
+            --code-bg: #f3f4f6;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f1115;
+                --fg: #e6e8eb;
+                --muted: #9aa1ab;
+                --accent: #6ea8fe;
+                --border: #262b33;
+                --card: #171a21;
+                --code-bg: #12151b;
+            }
+        }
+        * { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            font-size: 18px;
+        }
+        .wrap { max-width: 820px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+        header { text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 1.75rem; margin-bottom: 2rem; }
+        h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 0.75rem; }
+        h2 { font-size: 1.4rem; margin: 2.5rem 0 0.75rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1.12rem; margin: 1.75rem 0 0.5rem; color: var(--fg); }
+        .authors { color: var(--muted); font-size: 1.05rem; margin: 0.25rem 0 1.25rem; }
+        p { margin: 0.75rem 0; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { max-width: 100%; height: auto; display: block; margin: 1.25rem auto; border-radius: 6px; }
+        figure { margin: 1.5rem 0; }
+        figcaption { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 0.4rem; }
+        .links { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            border: 1px solid var(--border); background: var(--card);
+            color: var(--fg); padding: 0.5rem 1rem; border-radius: 8px;
+            font-size: 0.95rem; font-weight: 600;
+        }
+        .btn:hover { border-color: var(--accent); text-decoration: none; }
+        table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.98rem; }
+        th, td { border: 1px solid var(--border); padding: 0.55rem 0.8rem; text-align: left; }
+        th { background: var(--card); }
+        pre {
+            background: var(--code-bg); border: 1px solid var(--border);
+            border-radius: 8px; padding: 1rem; overflow-x: auto; font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+        .note { background: var(--card); border-left: 3px solid var(--accent); padding: 0.75rem 1rem; border-radius: 6px; color: var(--muted); font-size: 0.95rem; }
+        ul.refs { padding-left: 1.1rem; }
+        ul.refs li { margin: 0.4rem 0; color: var(--muted); font-size: 0.92rem; }
+        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <h1>GlyphNet: Homoglyph domains dataset and detection using attention-based Convolutional Neural Networks</h1>
+        <p class="authors">Akshat Gupta, Laxman Singh Tomar, Ridhima Garg</p>
+        <nav class="links">
+            <a class="btn" href="https://arxiv.org/abs/2306.10392">📄 Paper (arXiv)</a>
+            <a class="btn" href="https://github.com/Akshat4112/Glyphnet">💻 Code (GitHub)</a>
+            <a class="btn" href="https://huggingface.co/datasets/Akshat4112/Glyphnet">🤗 Dataset (Hugging Face)</a>
+        </nav>
+    </header>
+
+    <main>
         <h2>Abstract</h2>
-        Cyber attacks deceive machines into believing something that does not exist in the first place. However, there are some to which even humans fall prey. One such famous attack that attackers have used over the years to exploit the vulnerability of vision is known to be a Homoglyph attack. It employs a primary yet effective mechanism to create illegitimate domains that are hard to differentiate from legit ones. Moreover, as the difference is pretty indistinguishable for a user to notice, they cannot stop themselves from clicking on these homoglyph domain names.
-        In many cases, that results in either information theft or malware attack on their systems. Existing approaches use simple, string-based comparison techniques applied in primary language-based tasks. Although they are impactful to some extent, they usually fail because they are not robust to different types of homoglyphs and are computationally not feasible because of their time requirement proportional to the string's length.
-        Similarly, neural network-based approaches are employed to determine real domain strings from fake ones. Nevertheless, the problem with both methods is that they require paired sequences of real and fake domain strings to work with, which is often not the case in the real world, as the attacker only sends the illegitimate or homoglyph domain to the vulnerable user. Therefore, existing approaches are not suitable for practical scenarios in the real world. In our work, we created GlyphNet, an image dataset that contains 4M domains, both real and homoglyphs. Additionally, we introduce a baseline method for homoglyph attack detection system using an attention-based convolutional Neural Network. We show that our model can reach state-of-the-art accuracy in detecting homoglyph attacks with a 0.93 AUC on our dataset. 
-        
+        <p>Cyber attacks deceive machines into believing something that does not exist in the first place. However, there are some to which even humans fall prey. One such famous attack that attackers have used over the years to exploit the vulnerability of vision is known to be a Homoglyph attack. It employs a primary yet effective mechanism to create illegitimate domains that are hard to differentiate from legit ones. Moreover, as the difference is pretty indistinguishable for a user to notice, they cannot stop themselves from clicking on these homoglyph domain names. In many cases, that results in either information theft or malware attack on their systems.</p>
+        <p>Existing approaches use simple, string-based comparison techniques applied in primary language-based tasks. Although they are impactful to some extent, they usually fail because they are not robust to different types of homoglyphs and are computationally not feasible because of their time requirement proportional to the string's length. Similarly, neural network-based approaches are employed to determine real domain strings from fake ones. Nevertheless, the problem with both methods is that they require paired sequences of real and fake domain strings to work with, which is often not the case in the real world, as the attacker only sends the illegitimate or homoglyph domain to the vulnerable user.</p>
+        <p>In our work, we created GlyphNet, an image dataset that contains 4M domains, both real and homoglyphs. Additionally, we introduce a baseline method for a homoglyph attack detection system using an attention-based convolutional Neural Network. We show that our model can reach state-of-the-art accuracy in detecting homoglyph attacks with a <strong>0.93 AUC</strong> on our dataset.</p>
+
         <h2>Introduction</h2>
-        In cyber security, attackers employ different attacks to infiltrate our systems and networks, with the objective varying from stealing crucial information to inflicting system damage. One such deceptive attack is the homoglyph attack, which involves an attacker trying to fool humans and computer systems by using characters and symbols that may appear visually similar to characters used in real domain and process names but  are different. For example, a typical homoglyph attack may involve changing “d” to “cl”, “o” to “θ”, and “l” to “1”. <br>
-        
-        
-        <img src="resources/realfakedomains.png"><br>
+        <p>In cyber security, attackers employ different attacks to infiltrate our systems and networks, with the objective varying from stealing crucial information to inflicting system damage. One such deceptive attack is the homoglyph attack, which involves an attacker trying to fool humans and computer systems by using characters and symbols that may appear visually similar to characters used in real domain and process names but are different. For example, a typical homoglyph attack may involve changing &ldquo;d&rdquo; to &ldquo;cl&rdquo;, &ldquo;o&rdquo; to &ldquo;&theta;&rdquo;, and &ldquo;l&rdquo; to &ldquo;1&rdquo;.</p>
+        <figure>
+            <img src="resources/realfakedomains.png" alt="Examples of real domains next to their visually similar homoglyph counterparts">
+        </figure>
+        <figure>
+            <img src="resources/realfrost.png" alt="Rendered image of a real domain name">
+            <img src="resources/fakefrost.png" alt="Rendered image of a homoglyph (fake) domain name">
+            <figcaption>Real (top) versus homoglyph (bottom) domain names rendered as images.</figcaption>
+        </figure>
 
-        <img src="resources/realfrost.png" height="400" width="800"><br>
-
-        <img src="resources/fakefrost.png" height="400" width="800">
-        
         <h2>Dataset</h2>
-        
-        <img src="resources/realhomoglyph.png">
-        <h3>Proposed Dataset</h3>
-        
-        We have proposed a dataset consisting of real and homoglyph domains. In order to generate homoglyph domains,real domains are needed. We have obtained domains from the Domains Project. This repository is one of the largest collections of publicly available active domains. The entire repository comprises 500M domains, and we restricted our work to 2M domains due to hardware restrictions.
-        
-        <h3>Homoglyph Creation Algorithm</h3>
-        
-        Homoglyph Generation is an important task, as one needs to ensure enough randomness to make it appear real and keep the process simple enough to fool the target. Publicly available tools like dnstwist replace every character in the real input domain with their respective glyphs. It generates poor homoglyphs for the large part because it relies on paired data which is not fit to serve the purpose practically. We created our novel algorithm for the generation of homoglyph domains to ensure that real homoglyphs are generated with randomness and closeness. To achieve this, we sample homoglyph noise characters using Gaussian sampling from the glyph pool. We used 1M real domains to generate 2M homoglyphs with a single glyph character and introduce diversity in our dataset; we reran this algorithm on the remaining 1M real domains to generate homoglyph domains with two character glyphs. Finally, we have the 4M real and homoglyph domains.
-        
-        <h3>Image Generation</h3>
-        Homoglyph attacks exploit the weakness of human vision to differentiate real from homoglyph domain names. From a visual perspective, we are interested in learning the visual characteristics of real and homoglyph domain names. To do so, we rendered images from the real and homoglyph strings generated via our algorithm. We have used ARIAL Typeface as our chosen font, 28 font size, on a black background with white text from the middle left of the image; the image size is 150 × 150.
-        
-        <h3>Methodology</h3>
-        
-        <img src="resources/architecture.png" height="500" width="1400">
-        <img src="resources/attentionlayer.png" height="500" width="1400">
-        <h2>Experimentation</h2>
-        
-        <h2>Dataset and Metrics</h2>
-        We have split our dataset into three parts, train, validation, and test, with a ratio of 70 : 20 : 10, respectively which amounts to 2.8M, 0.8M, and 0.4M images in train, validation, and test sets. Each image size is 150 × 150. We use accuracy for measuring the performance of the classification task. Since accuracy can sometimes be misleading in a binary classification task, especially for unbalanced data sets, we consider precision, recall, and F1 score as our evaluation metrics, even though our dataset is balanced. We have also used the AUC score to compare our solution with some other works.
-        
-        <h3>Experimental Settings</h3>
-        
-        For the training part, we used binary cross-entropy as a Loss Function. We have used RMSProp Optimizer to optimize the loss obtained from the binary cross-entropy loss function, with a learning rate of 10e−4, and the network is trained for 30 epochs with early stopping. We trained with a batch size of 256. We have tracked performance with accuracy vs. epochs and loss vs. epochs plots.
-        
-        <h2>Results</h2>
-        
-        We evaluated our model on two unpaired data sets for domain names. We took an input string from the dataset we created in the previous section, converted it into an image, and fed it to the model to generate a binary label. The results for the domain names are tabulated in Table 2. Out of the 400k test images, our model correctly categorized 372k images resulting in 0.93 accuracy. Our model achieved an f1-score of 0.93, 13 points higher than the previous models. Our model outperforms other baselines and comparable works on the other metrics, including accuracy, precision, recall, and AUC. The performance of other models on our dataset was also below par compared with the proposed datasets in their works, signifying our dataset’s variations, difficulty, and importance.
-        
-        <h2>References</h2>
+        <figure>
+            <img src="resources/realhomoglyph.png" alt="Illustration of the real and homoglyph domain dataset construction">
+        </figure>
 
-<ul>
-    <li><p>Bahdanau, D.; Cho, K.; and Bengio, Y. 2014. Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473. </p></li>
-    <li><p>Boor, V.; Overmars, M. H.; and Van Der Stappen, A. F. 1999. The Gaussian sampling strategy for probabilistic roadmap planners. In Proceedings 1999 IEEE International Conference on Robotics and Automation (Cat. No. 99CH36288C), volume 2, 1018–1023. IEEE.</p></li>
-    <li><p>Cheng, L.; Liu, F.; and Yao, D. 2017. Enterprise data breach: causes, challenges, prevention, and future directions. Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery, 7(5): e1211. </p></li>
-    <li><p>Chollet, F.; et al. 2015. Keras. Damerau, F. J. 1964. A technique for computer detection and correction of spelling errors. Communications of the ACM, 7(3): 171–176. </p></li>
-    <li><p>Deng, J.; Dong, W.; Socher, R.; Li, L.-J.; Li, K.; and FeiFei, L. 2009. Imagenet: A large-scale hierarchical image database. In 2009 IEEE conference on computer vision and pattern recognition, 248–255. Ieee. </p></li>
-    <li><p>Ginsberg, A.; and Yu, C. 2018. Rapid homoglyph prediction and detection. In 2018 1st International Conference on Data Intelligence and Security (ICDIS), 17–23. IEEE. </p></li>
-    <li><p>Goodfellow, I.; Pouget-Abadie, J.; Mirza, M.; Xu, B.; Warde-Farley, D.; Ozair, S.; Courville, A.; and Bengio, Y. 2014. Generative adversarial nets. Advances in neural information processing systems, 27. </p></li>
-    <li><p>He, K.; Zhang, X.; Ren, S.; and Sun, J. 2016. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, 770–778. </p></li>
-    <li><p>Helms, M. M.; Ettkin, L. P.; and Morris, D. J. 2000. The risk of information compromise and approaches to prevention. The Journal of Strategic Information Systems, 9(1): 5–15.</p></li>
-    <li><p>Hoffer, E.; and Ailon, N. 2015. Deep metric learning using triplet network. In International workshop on similarity-based pattern recognition, 84–92. Springer. </p></li>
-    <li><p>Hong, J. 2012. The state of phishing attacks. Communications of the ACM, 55(1): 74–81. </p></li>
-    <li><p>Isola, P.; Zhu, J.-Y.; Zhou, T.; and Efros, A. A. 2017. Imageto-image translation with conditional adversarial networks. In Proceedings of the IEEE conference on computer vision and pattern recognition, 1125–1134.</p></li>
-</ul>
-<h2>Citation</h2>
-Gupta, Singh Tomar, & Garg. (n.d.). GlyphNet: Homoglyph domains dataset and detection using attention-based Convolutional Neural Networks.
+        <h3>Proposed Dataset</h3>
+        <p>We have proposed a dataset consisting of real and homoglyph domains. In order to generate homoglyph domains, real domains are needed. We have obtained domains from the Domains Project, one of the largest collections of publicly available active domains. The entire repository comprises 500M domains, and we restricted our work to 2M domains due to hardware restrictions.</p>
+
+        <h3>Homoglyph Creation Algorithm</h3>
+        <p>Homoglyph generation is an important task, as one needs to ensure enough randomness to make it appear real and keep the process simple enough to fool the target. Publicly available tools like dnstwist replace every character in the real input domain with their respective glyphs. It generates poor homoglyphs for the large part because it relies on paired data, which is not fit to serve the purpose practically. We created our novel algorithm for the generation of homoglyph domains to ensure that real homoglyphs are generated with randomness and closeness. To achieve this, we sample homoglyph noise characters using Gaussian sampling from the glyph pool. We used 1M real domains to generate 2M homoglyphs with a single glyph character and, to introduce diversity in our dataset, we reran this algorithm on the remaining 1M real domains to generate homoglyph domains with two-character glyphs. Finally, we have 4M real and homoglyph domains.</p>
+
+        <h3>Image Generation</h3>
+        <p>Homoglyph attacks exploit the weakness of human vision to differentiate real from homoglyph domain names. From a visual perspective, we are interested in learning the visual characteristics of real and homoglyph domain names. To do so, we rendered images from the real and homoglyph strings generated via our algorithm. We used the Arial typeface as our chosen font, size 28, on a black background with white text from the middle left of the image; the image size is 150 &times; 150.</p>
+
+        <p class="note">The dataset is available on the Hugging Face Hub at
+            <a href="https://huggingface.co/datasets/Akshat4112/Glyphnet">Akshat4112/Glyphnet</a>,
+            with <code>pairs</code> (domain / homoglyph) and <code>images</code> configs and ready-made
+            train/validation/test splits.</p>
+
+        <h2>Methodology</h2>
+        <figure>
+            <img src="resources/architecture.png" alt="GlyphNet model architecture: convolutional backbone with attention modules">
+            <figcaption>The attention-based convolutional neural network architecture.</figcaption>
+        </figure>
+        <figure>
+            <img src="resources/attentionlayer.png" alt="Diagram of the attention layer used in the network">
+            <figcaption>The attention layer.</figcaption>
+        </figure>
+
+        <h2>Experimentation</h2>
+        <h3>Dataset and Metrics</h3>
+        <p>We split our dataset into three parts &mdash; train, validation, and test &mdash; with a ratio of 70 : 20 : 10 respectively, which amounts to 2.8M, 0.8M, and 0.4M images. Each image size is 150 &times; 150. We use accuracy for measuring the performance of the classification task. Since accuracy can sometimes be misleading in a binary classification task, especially for unbalanced datasets, we also consider precision, recall, and F1 score as evaluation metrics, even though our dataset is balanced. We further use the AUC score to compare our solution with other works.</p>
+
+        <h3>Experimental Settings</h3>
+        <p>For training, we used binary cross-entropy as the loss function. We used the RMSProp optimizer to optimize the loss, with a learning rate of 10e&minus;4, and the network is trained for 30 epochs with early stopping. We trained with a batch size of 256, and tracked performance with accuracy-vs-epochs and loss-vs-epochs plots.</p>
+
+        <h2>Results</h2>
+        <p>We evaluated our model on unpaired domain-name data. We took an input string from the dataset, converted it into an image, and fed it to the model to generate a binary label. Out of the 400k test images, our model correctly categorized 372k images, resulting in 0.93 accuracy. Our model achieved an F1-score of 0.93, 13 points higher than previous models, and outperforms other baselines and comparable works on accuracy, precision, recall, and AUC. The performance of other models on our dataset was also below par compared with the datasets proposed in their works, signifying our dataset&rsquo;s variation, difficulty, and importance.</p>
+        <table>
+            <thead>
+                <tr><th>Metric</th><th>GlyphNet</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Accuracy</td><td>0.93 (372k / 400k test images)</td></tr>
+                <tr><td>F1-score</td><td>0.93</td></tr>
+                <tr><td>AUC</td><td>0.93</td></tr>
+            </tbody>
+        </table>
+
+        <h2>References</h2>
+        <ul class="refs">
+            <li>Bahdanau, D.; Cho, K.; and Bengio, Y. 2014. Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473.</li>
+            <li>Boor, V.; Overmars, M. H.; and Van Der Stappen, A. F. 1999. The Gaussian sampling strategy for probabilistic roadmap planners. In Proceedings 1999 IEEE International Conference on Robotics and Automation (Cat. No. 99CH36288C), volume 2, 1018&ndash;1023. IEEE.</li>
+            <li>Cheng, L.; Liu, F.; and Yao, D. 2017. Enterprise data breach: causes, challenges, prevention, and future directions. Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery, 7(5): e1211.</li>
+            <li>Chollet, F.; et al. 2015. Keras. Damerau, F. J. 1964. A technique for computer detection and correction of spelling errors. Communications of the ACM, 7(3): 171&ndash;176.</li>
+            <li>Deng, J.; Dong, W.; Socher, R.; Li, L.-J.; Li, K.; and Fei-Fei, L. 2009. Imagenet: A large-scale hierarchical image database. In 2009 IEEE conference on computer vision and pattern recognition, 248&ndash;255. IEEE.</li>
+            <li>Ginsberg, A.; and Yu, C. 2018. Rapid homoglyph prediction and detection. In 2018 1st International Conference on Data Intelligence and Security (ICDIS), 17&ndash;23. IEEE.</li>
+            <li>Goodfellow, I.; Pouget-Abadie, J.; Mirza, M.; Xu, B.; Warde-Farley, D.; Ozair, S.; Courville, A.; and Bengio, Y. 2014. Generative adversarial nets. Advances in neural information processing systems, 27.</li>
+            <li>He, K.; Zhang, X.; Ren, S.; and Sun, J. 2016. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition, 770&ndash;778.</li>
+            <li>Helms, M. M.; Ettkin, L. P.; and Morris, D. J. 2000. The risk of information compromise and approaches to prevention. The Journal of Strategic Information Systems, 9(1): 5&ndash;15.</li>
+            <li>Hoffer, E.; and Ailon, N. 2015. Deep metric learning using triplet network. In International workshop on similarity-based pattern recognition, 84&ndash;92. Springer.</li>
+            <li>Hong, J. 2012. The state of phishing attacks. Communications of the ACM, 55(1): 74&ndash;81.</li>
+            <li>Isola, P.; Zhu, J.-Y.; Zhou, T.; and Efros, A. A. 2017. Image-to-image translation with conditional adversarial networks. In Proceedings of the IEEE conference on computer vision and pattern recognition, 1125&ndash;1134.</li>
+        </ul>
+
+        <h2>Citation</h2>
+        <p>If you use GlyphNet in your research, please cite:</p>
+        <pre><code>@article{gupta2023glyphnet,
+  title   = {GlyphNet: Homoglyph domains dataset and detection using attention-based Convolutional Neural Networks},
+  author  = {Gupta, Akshat and Tomar, Laxman Singh and Garg, Ridhima},
+  journal = {arXiv preprint arXiv:2306.10392},
+  year    = {2023}
+}</code></pre>
+    </main>
+
+    <footer>
+        <p>GlyphNet &middot;
+            <a href="https://arxiv.org/abs/2306.10392">Paper</a> &middot;
+            <a href="https://github.com/Akshat4112/Glyphnet">Code</a> &middot;
+            <a href="https://huggingface.co/datasets/Akshat4112/Glyphnet">Dataset</a>
+        </p>
+    </footer>
+</div>
 </body>
 </html>
