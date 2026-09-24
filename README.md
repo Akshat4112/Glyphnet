@@ -15,7 +15,7 @@ and classifies it as **real** or **phish** with a CNN, so it catches visual
 look-alikes that string methods miss and works even when only the suspicious
 domain is available (no real/fake pairing required at inference time).
 
-> 📄 Paper: [GlyphNet: Homoglyph domains dataset and detection using attention-based Convolutional Neural Networks](https://arxiv.org/abs/2306.10392) (Gupta, Tomar & Garg, 2023) · reports **0.93 AUC** on the GlyphNet dataset.
+> 📄 Paper: [GlyphNet: Homoglyph domains dataset and detection using attention-based Convolutional Neural Networks](https://arxiv.org/abs/2306.10392) (Gupta, Tomar & Garg, 2023) · reports **0.93 AUC** on the paper's 4M-image dataset.
 
 ---
 
@@ -31,6 +31,18 @@ domain is available (no real/fake pairing required at inference time).
 
 The dataset is published on the Hugging Face Hub:
 **[`Akshat4112/Glyphnet`](https://huggingface.co/datasets/Akshat4112/Glyphnet)**.
+
+### Which dataset do the counts describe?
+
+| Artifact | Count | Rendering | Result |
+|----------|-------|-----------|--------|
+| [Paper experiment](https://arxiv.org/html/2306.10392v1) | 2M real + 2M synthetic homoglyph domains = **4M images** | 150×150, Arial | The paper reports **0.93 AUC** on this experiment. |
+| [Public Hub release](https://huggingface.co/datasets/Akshat4112/Glyphnet) | **1,285,579 pairs** = **2,571,158 images**, one real and one spoofed per pair | 256×256, DejaVu Sans | No corresponding AUC for this release is claimed here. |
+
+The Hub edition is generated from the related `dataset_final.csv` pipeline but
+is separately rendered and smaller than the dataset described in the paper.
+The published sources do not establish exact row-for-row correspondence. Do not
+apply the paper's performance number to the Hub images without evaluating them.
 
 | Config | Rows | Fields |
 |--------|------|--------|
