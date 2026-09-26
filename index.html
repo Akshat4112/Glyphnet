@@ -98,6 +98,7 @@
 
     <main>
         <h2>Abstract</h2>
+        <p class="note">The following paper abstract describes the original 4M-image experiment. The separately rendered public release is explained under <a href="#public-release">Paper dataset and public release</a>.</p>
         <p>Cyber attacks deceive machines into believing something that does not exist in the first place. However, there are some to which even humans fall prey. One such famous attack that attackers have used over the years to exploit the vulnerability of vision is known to be a Homoglyph attack. It employs a primary yet effective mechanism to create illegitimate domains that are hard to differentiate from legit ones. Moreover, as the difference is pretty indistinguishable for a user to notice, they cannot stop themselves from clicking on these homoglyph domain names. In many cases, that results in either information theft or malware attack on their systems.</p>
         <p>Existing approaches use simple, string-based comparison techniques applied in primary language-based tasks. Although they are impactful to some extent, they usually fail because they are not robust to different types of homoglyphs and are computationally not feasible because of their time requirement proportional to the string's length. Similarly, neural network-based approaches are employed to determine real domain strings from fake ones. Nevertheless, the problem with both methods is that they require paired sequences of real and fake domain strings to work with, which is often not the case in the real world, as the attacker only sends the illegitimate or homoglyph domain to the vulnerable user.</p>
         <p>In our work, we created GlyphNet, an image dataset that contains 4M domains, both real and homoglyphs. Additionally, we introduce a baseline method for a homoglyph attack detection system using an attention-based convolutional Neural Network. We show that our model can reach state-of-the-art accuracy in detecting homoglyph attacks with a <strong>0.93 AUC</strong> on our dataset.</p>
@@ -127,10 +128,18 @@
         <h3>Image Generation</h3>
         <p>Homoglyph attacks exploit the weakness of human vision to differentiate real from homoglyph domain names. From a visual perspective, we are interested in learning the visual characteristics of real and homoglyph domain names. To do so, we rendered images from the real and homoglyph strings generated via our algorithm. We used the Arial typeface as our chosen font, size 28, on a black background with white text from the middle left of the image; the image size is 150 &times; 150.</p>
 
-        <p class="note">The dataset is available on the Hugging Face Hub at
-            <a href="https://huggingface.co/datasets/Akshat4112/Glyphnet">Akshat4112/Glyphnet</a>,
-            with <code>pairs</code> (domain / homoglyph) and <code>images</code> configs and ready-made
-            train/validation/test splits.</p>
+        <h3 id="public-release">Paper dataset and public release</h3>
+        <p>The <a href="https://arxiv.org/html/2306.10392v1">paper dataset</a> contains
+            4 million images (2 million real domains and 2 million synthetic homoglyph
+            domains), rendered at 150 &times; 150 with Arial. The paper's 0.93 AUC was
+            reported for that experiment.</p>
+        <p class="note">The separately rendered
+            <a href="https://huggingface.co/datasets/Akshat4112/Glyphnet">public Hub release</a>
+            contains 1,285,579 genuine/spoof pairs in <code>pairs</code> and 2,571,158
+            images in <code>images</code> (one real and one spoofed image per pair),
+            rendered at 256 &times; 256 with DejaVu Sans. It comes from the related
+            generation pipeline, but the public images are not identical to the paper
+            images. The 0.93 AUC is not a reported result on this release.</p>
 
         <h2>Methodology</h2>
         <figure>
