@@ -49,6 +49,15 @@ so the task can be tackled as text **or** image classification.
 Paper: [arXiv:2306.10392](https://arxiv.org/abs/2306.10392) ·
 Code: [github.com/Akshat4112/Glyphnet](https://github.com/Akshat4112/Glyphnet)
 
+## Paper dataset versus this release
+
+The paper describes 4 million 150x150 Arial-rendered images (2 million real
+domains and 2 million synthetic homoglyph domains) and reports 0.93 AUC for
+that experiment. This public release has 1,285,579 domain pairs and 2,571,158
+separately rendered 256x256 DejaVu Sans images, one real and one spoofed per
+pair. The release is smaller and does not contain the identical paper image
+files. The paper's AUC is not a reported evaluation of this release.
+
 ## Configs & splits
 
 Both configs share the same `train` / `validation` / `test` split (70/20/10).
